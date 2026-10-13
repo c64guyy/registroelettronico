@@ -1,12 +1,14 @@
 /* ===== Variabili (colori e misure in un solo posto) ===== */
 :root {
-    --inchiostro: #1f3a5f;
-    --inchiostro-scuro: #152944;
+    --inchiostro: #a42e2e;
+    --inchiostro-scuro: #6b0f0f;
     --carta: #f4f5f1;
+    --thtabella: #d05252;
     --bianco: #ffffff;
-    --testo: #1d2430;
-    --testo-tenue: #5b6575;
-    --bordo: #d5d9d0;
+    --testo: #6b0f0f;
+    --testo-tenue: #444343;
+    --testo-tab:var(--bianco);
+    --bordo: #d99898;
     --ok: #2e7d4f;
     --ok-sfondo: #e4f2e9;
     --errore: #b3261e;
@@ -95,7 +97,7 @@ main { max-width: 980px; margin: 0 auto; padding: 1.5rem; }
 .scroll-tabella { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; }
 th, td { text-align: left; padding: .6rem .7rem; border-bottom: 1px solid var(--bordo); }
-th { background: var(--carta); font-size: .9rem; color: var(--testo-tenue); }
+th { background: var(--inchiostro); font-size: .9rem; color: var(--testo-tab); }
 .azioni-cella { display: flex; gap: .4rem; }
 .vuoto { color: var(--testo-tenue); font-style: italic; padding: .75rem 0; }
 
