@@ -30,3 +30,18 @@ function login() {
     sessionStorage.setItem(CHIAVE_SESSIONE, JSON.stringify(sessione));
     location.href = "dashboard.html";
 }
+
+function togglePassword() {
+    const input = document.getElementById('password');
+    const btn = document.getElementById('togglePassword');
+    const nascosta = input.type === 'password';
+
+    input.type = nascosta ? 'text' : 'password';
+    btn.textContent = nascosta ? '🙈' : '👁️';
+    btn.setAttribute('aria-label', nascosta ? 'Nascondi password' : 'Mostra password');
+}
+
+if (!document.getElementById("bottonRico").checked) {
+    document.getElementById("messaggi").textContent = "Devi spuntare la casella Ricordami.";
+    return;
+}

@@ -120,3 +120,51 @@ th { background: var(--carta); font-size: .9rem; color: var(--testo-tenue); }
 @media (max-width: 600px) {
     .media { margin-left: 0; width: 100%; }
 }
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 42px; /* spazio per l'occhio */
+    box-sizing: border-box;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0;
+}
+
+.riga-opzioni {
+    display: flex;
+    justify-content: space-between; /* uno a sinistra, l'altro a destra */
+    align-items: center;
+    margin: 10px 0;
+}
+
+.ricordami {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.link-password {
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: #4da3ff;
+}
+
+.link-password:hover {
+    text-decoration: underline;
+}
+
