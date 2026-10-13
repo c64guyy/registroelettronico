@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard - Registro Elettronico</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/dati.js"></script>
+    <script defer src="js/validazione.js"></script>
+    <script defer src="js/common.js"></script>
+    <script defer src="js/dashboard.js"></script>
+</head>
+<body>
+    <header class="topbar">
+        <span class="brand">Registro Elettronico</span>
+        <nav>
+            <a href="dashboard.html" class="attivo">Dashboard</a>
+            <a href="studenti.html">Studenti</a>
+            <a href="voti.html">Voti</a>
+        </nav>
+        <div class="utente">
+            <span id="nomeUtente"></span>
+            <button class="btn btn-secondario piccolo" onclick="logout()">Esci</button>
+        </div>
+    </header>
+
+    <main>
+        <h1>Dashboard</h1>
+        <p class="sottotitolo">Panoramica della classe.</p>
+
+        <section class="statistiche">
+            <div class="statistica"><div class="numero" id="numStudenti">0</div><div class="etichetta">Studenti</div></div>
+            <div class="statistica"><div class="numero" id="numVoti">0</div><div class="etichetta">Voti registrati</div></div>
+            <div class="statistica"><div class="numero" id="mediaGenerale">-</div><div class="etichetta">Media generale</div></div>
+            <div class="statistica"><div class="numero" id="numInsufficienze">0</div><div class="etichetta">Insufficienze</div></div>
+        </section>
+
+        <section class="pannello">
+            <h2>Ultimi voti inseriti</h2>
+            <div class="scroll-tabella">
+                <table>
+                    <thead>
+                        <tr><th>Data</th><th>Studente</th><th>Materia</th><th>Voto</th></tr>
+                    </thead>
+                    <tbody id="corpoTabella"></tbody>
+                </table>
+            </div>
+            <p id="vuoto" class="vuoto" hidden>Nessun voto registrato. Aggiungi uno studente e poi il suo primo voto, oppure carica i dati di esempio.</p>
+        </section>
+
+        <section class="pannello">
+            <h2>Strumenti di sviluppo</h2>
+            <p class="sottotitolo">Servono solo durante il progetto, finché non c'è il database.</p>
+            <div class="azioni">
+                <button class="btn btn-secondario" onclick="azioneCaricaDemo()">Carica dati di esempio</button>
+                <button class="btn btn-pericolo" onclick="azioneCancellaDati()">Cancella tutti i dati</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

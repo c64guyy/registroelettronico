@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Studenti - Registro Elettronico</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/dati.js"></script>
+    <script defer src="js/validazione.js"></script>
+    <script defer src="js/common.js"></script>
+    <script defer src="js/studenti.js"></script>
+</head>
+<body>
+    <header class="topbar">
+        <span class="brand">Registro Elettronico</span>
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="studenti.html" class="attivo">Studenti</a>
+            <a href="voti.html">Voti</a>
+        </nav>
+        <div class="utente">
+            <span id="nomeUtente"></span>
+            <button class="btn btn-secondario piccolo" onclick="logout()">Esci</button>
+        </div>
+    </header>
+
+    <main>
+        <h1>Studenti</h1>
+
+        <section class="pannello">
+            <h2>Nuovo studente</h2>
+            <div class="griglia-form">
+                <div class="campo">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" placeholder="Nome">
+                </div>
+                <div class="campo">
+                    <label for="cognome">Cognome</label>
+                    <input type="text" id="cognome" name="cognome" placeholder="Cognome">
+                </div>
+                <div class="campo">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="esempio@gmail.com">
+                </div>
+                <div class="campo">
+                    <label for="dataNascita">Data di nascita</label>
+                    <input type="date" id="dataNascita" name="dataNascita">
+                </div>
+            </div>
+            <div class="azioni">
+                <button class="btn" onclick="salvaStudente()">Aggiungi studente</button>
+            </div>
+            <div id="messaggi" class="messaggi"></div>
+        </section>
+
+        <section class="pannello">
+            <h2>Elenco studenti</h2>
+            <div class="scroll-tabella">
+                <table>
+                    <thead>
+                        <tr><th>Cognome</th><th>Nome</th><th>Email</th><th>Nato il</th><th>Media</th><th>Azioni</th></tr>
+                    </thead>
+                    <tbody id="corpoTabella"></tbody>
+                </table>
+            </div>
+            <p id="vuoto" class="vuoto" hidden>Nessuno studente inserito. Compila il modulo qui sopra per aggiungere il primo.</p>
+        </section>
+    </main>
+</body>
+</html>
