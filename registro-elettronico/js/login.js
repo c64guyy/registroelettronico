@@ -45,11 +45,9 @@ function togglePassword() {
 
 const CHIAVE_COOKIE = "consensoCookie";   // valori: "accettati" | "rifiutati"
 
-// Mostra il banner solo se l'utente non ha ancora scelto
+// Mostra il banner ogni volta che la pagina viene aperta o ricaricata
 function controllaCookie() {
-    if (localStorage.getItem(CHIAVE_COOKIE) === null) {
-        document.getElementById("bannerCookie").hidden = false;
-    }
+    document.getElementById("bannerCookie").hidden = false;
 }
 
 function scegliCookie(scelta) {
