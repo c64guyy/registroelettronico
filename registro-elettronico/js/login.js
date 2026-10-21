@@ -40,3 +40,21 @@ function togglePassword() {
     btn.textContent = nascosta ? '🙈' : '👁️';
     btn.setAttribute('aria-label', nascosta ? 'Nascondi password' : 'Mostra password');
 }
+
+/* ---------- Banner cookie ---------- */
+
+const CHIAVE_COOKIE = "consensoCookie";   // valori: "accettati" | "rifiutati"
+
+// Mostra il banner solo se l'utente non ha ancora scelto
+function controllaCookie() {
+    if (localStorage.getItem(CHIAVE_COOKIE) === null) {
+        document.getElementById("bannerCookie").hidden = false;
+    }
+}
+
+function scegliCookie(scelta) {
+    localStorage.setItem(CHIAVE_COOKIE, scelta);
+    document.getElementById("bannerCookie").hidden = true;
+}
+
+controllaCookie();

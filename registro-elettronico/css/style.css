@@ -170,3 +170,15 @@ th { background: var(--inchiostro); font-size: .9rem; color: var(--testo-tab); }
     text-decoration: underline;
 }
 
+/* ===== Banner cookie ===== */
+.banner-cookie {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 1000;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: var(--bianco); color: var(--testo);
+    border-top: 4px solid var(--inchiostro);
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, .15);
+}
+.banner-cookie[hidden] { display: none; }
+.banner-cookie p { margin: 0; flex: 1 1 320px; font-size: .9rem; }
+.banner-cookie-azioni { display: flex; gap: .6rem; }
