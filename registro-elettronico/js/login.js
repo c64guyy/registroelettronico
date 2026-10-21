@@ -40,8 +40,3 @@ function togglePassword() {
     btn.textContent = nascosta ? '🙈' : '👁️';
     btn.setAttribute('aria-label', nascosta ? 'Nascondi password' : 'Mostra password');
 }
-
-if (!document.getElementById("bottonRico").checked) {
-    document.getElementById("messaggi").textContent = "Devi spuntare la casella Ricordami.";
-    return;
-}
