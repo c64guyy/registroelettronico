@@ -232,3 +232,8 @@ th { background: var(--inchiostro); font-size: .9rem; color: var(--testo-tab); }
 .btn-cie { background: #1d3557; }
 .btn-cie:hover { background: #0f2038; }
 
+.logo {
+  width: 150px;
+  max-width: 100%;
+  height: auto;
+}
