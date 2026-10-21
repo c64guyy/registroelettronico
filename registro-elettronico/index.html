@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Accesso - Registro Elettronico</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="favicon.ico">
     <script defer src="js/dati.js"></script>
     <script defer src="js/validazione.js"></script>
     <script defer src="js/common.js"></script>
@@ -19,9 +20,22 @@
             <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="docente@scuola.it">
         </div>
-        <div class="campo">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" onkeydown="if (event.key === 'Enter') login()">
+            <div class="campo">
+                <label for="password">Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" name="password" placeholder="Password"
+                            onkeydown="if (event.key === 'Enter') login()">
+                        <button type="button" class="toggle-password" id="togglePassword"
+                            onclick="togglePassword()" aria-label="Mostra password">👁️</button>
+           <div class="riga-opzioni">
+    <label class="ricordami" for="bottonRico">
+        <input type="checkbox" id="bottonRico" name="ricordami" required>
+        Ricordami!
+    </label>
+
+    <a href="recupera-password.html" class="link-password">Password dimenticata?</a>
+</div>
+
         </div>
 
         <button class="btn" onclick="login()">Accedi</button>
