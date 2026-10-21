@@ -23,8 +23,8 @@ function creaBannerCookie() {
     banner.setAttribute("aria-label", "Consenso ai cookie");
 
     const testo = document.createElement("p");
-    testo.textContent = "Questo sito usa cookie e strumenti simili per farlo funzionare e per ricordare le tue preferenze. " +
-        "Puoi accettarli oppure rifiutarli.";
+    testo.textContent = "This site uses cookies and similar tools to make it work and to remember your preferences. " +
+        "You can accept or reject them.";
 
     const azioni = document.createElement("div");
     azioni.className = "banner-cookie-azioni";
@@ -32,13 +32,13 @@ function creaBannerCookie() {
     const rifiuta = document.createElement("button");
     rifiuta.type = "button";
     rifiuta.className = "btn btn-secondario";
-    rifiuta.textContent = "Rifiuta";
+    rifiuta.textContent = "Refiute";
     rifiuta.onclick = function () { scegliCookie("rifiutati"); };
 
     const accetta = document.createElement("button");
     accetta.type = "button";
     accetta.className = "btn";
-    accetta.textContent = "Accetta";
+    accetta.textContent = "Allow";
     accetta.onclick = function () { scegliCookie("accettati"); };
 
     azioni.appendChild(rifiuta);

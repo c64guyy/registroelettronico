@@ -233,7 +233,39 @@ th { background: var(--inchiostro); font-size: .9rem; color: var(--testo-tab); }
 .btn-cie:hover { background: #0f2038; }
 
 .logo {
-  width: 150px;
-  max-width: 100%;
+  width: 100px;
+  max-width: 80%;
   height: auto;
+}
+
+/* ===== Menu laterale con icone ===== */
+.menu-laterale {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 70px;
+    height: 100vh;
+    z-index: 100;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding-top: 20px;
+}
+
+.menu-laterale a {
+    display: block;
+}
+
+.icona-menu {
+    width: 36px;
+    height: 36px;
+    display: block;
+    cursor: pointer;
+    transition: transform .2s ease;
+}
+
+.icona-menu:hover {
+    transform: scale(1.1);
 }
