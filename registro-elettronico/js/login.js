@@ -1,4 +1,7 @@
-/* LOGIN.JS - pagina di accesso */
+/* LOGIN.JS - pagina di accesso (docente, studente, genitore)
+   Il ruolo viene letto dall'attributo data-ruolo del <body> della pagina. */
+
+const RUOLO = document.body.dataset.ruolo;
 
 // Se sono già loggato vado direttamente alla dashboard
 if (getUtente() !== null) {
@@ -19,14 +22,15 @@ function login() {
         return;
     }
 
-    // 2) Controllo credenziali (FINTO: per ora confrontiamo con l'utente demo)
-    if (email !== UTENTE_DEMO.email || password !== UTENTE_DEMO.password) {
+    // 2) Controllo credenziali (FINTO: per ora confrontiamo con l'utente demo di QUESTO ruolo)
+    const utente = UTENTI_DEMO[RUOLO];
+    if (utente === undefined || email !== utente.email || password !== utente.password) {
         mostraErrori("messaggi", ["Email o password non corrette."]);
         return;
     }
 
     // 3) Salvo la sessione come stringa JSON (mai la password!) e cambio pagina
-    const sessione = { email: UTENTE_DEMO.email, nome: UTENTE_DEMO.nome };
+    const sessione = { email: utente.email, nome: utente.nome, ruolo: utente.ruolo };
     sessionStorage.setItem(CHIAVE_SESSIONE, JSON.stringify(sessione));
     location.href = "dashboard.html";
 }
@@ -40,19 +44,3 @@ function togglePassword() {
     btn.textContent = nascosta ? '🙈' : '👁️';
     btn.setAttribute('aria-label', nascosta ? 'Nascondi password' : 'Mostra password');
 }
-
-/* ---------- Banner cookie ---------- */
-
-const CHIAVE_COOKIE = "consensoCookie";   // valori: "accettati" | "rifiutati"
-
-// Mostra il banner ogni volta che la pagina viene aperta o ricaricata
-function controllaCookie() {
-    document.getElementById("bannerCookie").hidden = false;
-}
-
-function scegliCookie(scelta) {
-    localStorage.setItem(CHIAVE_COOKIE, scelta);
-    document.getElementById("bannerCookie").hidden = true;
-}
-
-controllaCookie();

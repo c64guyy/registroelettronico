@@ -14,8 +14,12 @@ const CHIAVE_SESSIONE = "utenteLoggato";
 const MATERIE = ["Italiano", "Matematica", "Inglese", "Storia", "Informatica", "Sistemi e reti", "Scienze motorie"];
 const TIPI_VERIFICA = ["Scritto", "Orale", "Pratico"];
 
-// Utente di prova (FINTO: quando avremo il back-end il login si farà sul server!)
-const UTENTE_DEMO = { email: "docente@scuola.it", password: "Docente1!", nome: "Prof. Mario Rossi" };
+// Utenti di prova, uno per ruolo (FINTI: quando avremo il back-end il login si farà sul server!)
+const UTENTI_DEMO = {
+    docente:  { email: "docente@scuola.it",         password: "Docente1!",  nome: "Prof. Mario Rossi", ruolo: "docente" },
+    studente: { email: "giulia.bianchi@mail.it",    password: "Studente1!", nome: "Giulia Bianchi",    ruolo: "studente" },
+    genitore: { email: "genitore@mail.it",          password: "Genitore1!", nome: "Anna Bianchi",      ruolo: "genitore" }
+};
 
 // Dati di esempio, scritti come STRINGA JSON e poi convertiti con JSON.parse
 const DATI_DEMO = '{' +
