@@ -1,59 +1,46 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>R.E.D. - Scegli il tuo profilo</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="favicon.ico">
-    <script defer src="js/dati.js"></script>
-    <script defer src="js/common.js"></script>
-    <script defer src="js/cookie.js"></script>
-    <script defer src="js/scelta.js"></script>
-    <style>
-    body {
-        background:
-            linear-gradient(rgba(47, 118, 224, .07) 1px, transparent 1px) 0 0 / 72px 56px,
-            linear-gradient(90deg, rgba(47, 118, 224, .07) 1px, transparent 1px) 0 0 / 72px 56px,
-            linear-gradient(160deg, #eaf4fe 0%, #cfe6fc 55%, #a8d4f8 100%) !important;
-        background-attachment: fixed !important;
-        min-height: 100vh;
-    }
-</style>
-</head>
-<body class="pagina-login">
-   <nav class="menu-laterale" aria-label="Menu principale">
-    <a href="index.html">
-        <img src="italia.png" alt="Voti" class="icona-menu">
-    </a>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>RED - Scegli il tuo profilo</title>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="icon" href="assets/favicon/favicon.ico">
+    </head>
 
-    <a href="pagina-inglese.html">
-        <img src="inghilterra.png" alt="Compiti" class="icona-menu">
-    </a>
+    <body class="pagina-login">
+        <nav class="pagina-login">
+            <a href="index.html">
+                <img src="assets/img/italia.png" alt="Italiano" class="icona-menu">
+            </a>
 
-    <a href="pagina-spagnolo.html">
-        <img src="spagna.png" alt="Presenze" class="icona-menu">
-    </a>
-</nav>
-    <img src="logo.jpg" alt="Logo registro" class="logo">
-    <div class="scheda-login scheda-ampia">
-        <h1>R.E.D. - Registro Elettronico Digitale</h1>
-        <p class="sottotitolo">Come vuoi entrare? Scegli il tuo profilo.</p>
+            <a href="index_ing.html">
+                <img src="assets/img/inghilterra.png" alt="Inglese" class="icona-menu">
+            </a>
 
-        <nav class="scelta-ruoli" aria-label="Scelta del profilo">
-            <a href="index-studente.html" class="btn-ruolo ruolo-studente">
+            <a href="index_spa.html">
+                <img src="assets/img/spagna.png" alt="Spagnolo" class="icona-menu">
+            </a>
+        </nav>
+
+        <img src="assets/img/logo.png" alt="Logo registro" class="logo">
+        <div class="scheda-login-ampia">
+            <h1>RED - Registro Elettronico Digitale</h1>
+            <p class="sottotitolo">Scegli il tuo profilo.</p>
+
+            <nav class="scelta-ruoli" aria-label="Scelta del profilo">
+            <a href="index_studente.html" class="btn-ruolo-studente">
                 <span class="icona" aria-hidden="true">🎓</span>
                 <span>Studente<small>Accedi come studente</small></span>
             </a>
-            <a href="index-docente.html" class="btn-ruolo ruolo-docente">
+            <a href="index_docente.html" class="btn-ruolo-docente">
                 <span class="icona" aria-hidden="true">🧑‍🏫</span>
                 <span>Docente<small>Accedi come docente</small></span>
             </a>
-            <a href="index-genitore.html" class="btn-ruolo ruolo-genitore">
+            <a href="index_genitore.html" class="btn-ruolo-genitore">
                 <span class="icona" aria-hidden="true">👪</span>
                 <span>Genitore<small>Accedi come genitore</small></span>
             </a>
-        </nav>
-    </div>
-</body>
+        </div>
+    </body>
 </html>

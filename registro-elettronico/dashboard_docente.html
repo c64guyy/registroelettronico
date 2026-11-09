@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Dashboard Docente - RED</title>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="icon" href="assets/favicon/favicon.ico">
+    </head>
+    <body class="dashboard dash_docente">
+
+        <header class="barra-alto">
+            <div class="titolo">RED</div>
+            <div class="utente">
+                <span>🧑‍🏫 Prof. Marco Rossi</span>
+                <a href="index.html">Esci</a>
+            </div>
+        </header>
+
+        <div class="contenitore">
+            <nav class="menu-laterale" aria-label="Menu docente">
+                <ul>
+                    <li><a href="#home" class="attivo">🏠 Home</a></li>
+                    <li><a href="#classi">🏫 Le mie classi</a></li>
+                    <li><a href="#appello">✅ Appello</a></li>
+                    <li><a href="#nuovo-voto">📝 Inserisci voto</a></li>
+                    <li><a href="#compiti">📚 Compiti</a></li>
+                    <li><a href="#agenda">🗓️ Agenda</a></li>
+                </ul>
+            </nav>
+
+            <main class="contenuto">
+                <section id="home" class="benvenuto">
+                    <h1>Buongiorno, prof. Rossi! 👋</h1>
+                    <p>Ecco cosa c'è in programma oggi.</p>
+                </section>
+
+                <section class="riepilogo">
+                    <div class="dato">
+                        <span class="numero">4</span>
+                        <span class="etichetta">Classi</span>
+                    </div>
+                    <div class="dato">
+                        <span class="numero">92</span>
+                        <span class="etichetta">Studenti</span>
+                    </div>
+                    <div class="dato">
+                        <span class="numero">3</span>
+                        <span class="etichetta">Lezioni oggi</span>
+                    </div>
+                    <div class="dato">
+                        <span class="numero">12</span>
+                        <span class="etichetta">Compiti da correggere</span>
+                    </div>
+                </section>
+
+                <section id="classi" class="scheda">
+                    <h2>🏫 Le mie classi</h2>
+                    <div class="contenitore-tabella">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Classe</th>
+                                    <th>Materia</th>
+                                    <th>Studenti</th>
+                                    <th>Media classe</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1A</td>
+                                    <td>Matematica</td>
+                                    <td>22</td>
+                                    <td><span class="voto voto-alto">7,2</span></td>
+                                    <td><a href="#">Apri</a></td>
+                                </tr>
+                                <tr>
+                                    <td>2B</td>
+                                    <td>Matematica</td>
+                                    <td>24</td>
+                                    <td><span class="voto voto-medio">6,4</span></td>
+                                    <td><a href="#">Apri</a></td>
+                                </tr>
+                                <tr>
+                                    <td>3A</td>
+                                    <td>Matematica</td>
+                                    <td>23</td>
+                                    <td><span class="voto voto-alto">7,8</span></td>
+                                    <td><a href="#">Apri</a></td>
+                                </tr>
+                                <tr>
+                                    <td>4C</td>
+                                    <td>Fisica</td>
+                                    <td>23</td>
+                                    <td><span class="voto voto-basso">5,9</span></td>
+                                    <td><a href="#">Apri</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="griglia">
+                    <div id="appello" class="scheda">
+                        <h2>✅ Appello - 3A</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Studente</th>
+                                    <th>Presente</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Bianchi Giulia</td>
+                                    <td><input type="checkbox" checked></td>
+                                </tr>
+                                <tr>
+                                    <td>Conti Luca</td>
+                                    <td><input type="checkbox" checked></td>
+                                </tr>
+                                <tr>
+                                    <td>Ferrari Sara</td>
+                                    <td><input type="checkbox"></td>
+                                </tr>
+                                <tr>
+                                    <td>Greco Matteo</td>
+                                    <td><input type="checkbox" checked></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <button type="button" class="btn btn-piccolo">Salva appello</button>
+                    </div>
+
+                    <div id="nuovo-voto" class="scheda">
+                        <h2>📝 Inserisci un voto</h2>
+                        <div class="campo">
+                            <label for="classe">Classe</label>
+                            <select id="classe" name="classe">
+                                <option>1A</option>
+                                <option>2B</option>
+                                <option selected>3A</option>
+                                <option>4C</option>
+                            </select>
+                        </div>
+                        <div class="campo">
+                            <label for="studente">Studente</label>
+                            <select id="studente" name="studente">
+                                <option>Bianchi Giulia</option>
+                                <option>Conti Luca</option>
+                                <option>Ferrari Sara</option>
+                                <option>Greco Matteo</option>
+                            </select>
+                        </div>
+                        <div class="form-riga">
+                            <div class="campo">
+                                <label for="voto">Voto</label>
+                                <input type="number" id="voto" name="voto" min="1" max="10" step="0.25" placeholder="es. 7.5">
+                            </div>
+                            <div class="campo">
+                                <label for="tipo">Tipo</label>
+                                <select id="tipo" name="tipo">
+                                    <option>Scritto</option>
+                                    <option>Orale</option>
+                                    <option>Pratico</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="button" class="btn">Salva voto</button>
+                    </div>
+                </section>
+
+                <section class="griglia">
+                    <div id="compiti" class="scheda">
+                        <h2>📚 Compiti assegnati</h2>
+                        <ul class="lista">
+                            <li>
+                                <span class="data">3A - consegna 03/11/2026</span>
+                                <strong>Esercizi pag. 142 n. 1-10</strong>
+                                <span class="badge badge-attesa">12 da correggere</span>
+                            </li>
+                            <li>
+                                <span class="data">2B - consegna 05/11/2026</span>
+                                <strong>Problemi sulle equazioni</strong>
+                                <span class="badge badge-ok">Corretti</span>
+                            </li>
+                        </ul>
+                        <br>
+                        <button type="button" class="btn btn-piccolo">+ Nuovo compito</button>
+                    </div>
+
+                    <div id="agenda" class="scheda">
+                        <h2>🗓️ Agenda di oggi</h2>
+                        <table class="orario">
+                            <tbody>
+                                <tr><td>8:00</td><td>Matematica - 3A</td></tr>
+                                <tr><td>10:00</td><td>Matematica - 1A</td></tr>
+                                <tr><td>12:15</td><td>Fisica - 4C</td></tr>
+                                <tr><td>15:00</td><td>Consiglio di classe 2B</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <footer>RED - Registro Elettronico Digitale</footer>
+    </body>
+</html>

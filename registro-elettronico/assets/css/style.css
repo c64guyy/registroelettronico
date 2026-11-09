@@ -1,0 +1,608 @@
+/* =========================================================
+   RED - Registro Elettronico Digitale
+   Foglio di stile unico (login + dashboard)
+   ========================================================= */
+
+/* ---------- 1. VARIABILI E RESET ---------- */
+:root {
+    --colore: #c62828;          /* colore principale (cambia per ruolo) */
+    --colore-chiaro: #fdeaea;   /* versione chiara del colore principale */
+    --sfondo: #f3f4f6;
+    --bianco: #ffffff;
+    --testo: #1f2937;
+    --grigio: #6b7280;
+    --bordo: #e5e7eb;
+    --verde: #16a34a;
+    --giallo: #d97706;
+    --rosso: #dc2626;
+    --raggio: 12px;
+    --ombra: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Colori per ruolo: login + dashboard */
+body.login_alunno,
+body.dash_studente {
+    --colore: #2563eb;
+    --colore-chiaro: #dbeafe;
+}
+
+body.login_docente,
+body.dash_docente {
+    --colore: #16a34a;
+    --colore-chiaro: #dcfce7;
+}
+
+body.login_genitore,
+body.dash_genitore {
+    --colore: #ea580c;
+    --colore-chiaro: #ffedd5;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--sfondo);
+    color: var(--testo);
+    line-height: 1.5;
+}
+
+a {
+    color: var(--colore);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1 {
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+}
+
+h2 {
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+}
+
+/* ---------- 2. PAGINE DI LOGIN ---------- */
+body.pagina-login,
+body.login_alunno,
+body.login_docente,
+body.login_genitore {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--colore-chiaro), var(--bianco));
+}
+
+/* Menu lingue in alto a destra */
+nav.pagina-login {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.icona-menu {
+    width: 32px;
+    height: 22px;
+    object-fit: cover;
+    border-radius: 3px;
+    border: 1px solid var(--bordo);
+}
+
+.logo {
+    width: 120px;
+    margin-bottom: 16px;
+}
+
+.scheda-login,
+.scheda-login-ampia {
+    background: var(--bianco);
+    border-radius: var(--raggio);
+    box-shadow: var(--ombra);
+    padding: 30px;
+    width: 100%;
+    max-width: 420px;
+    border-top: 5px solid var(--colore);
+}
+
+.scheda-login-ampia {
+    max-width: 560px;
+    text-align: center;
+}
+
+.sottotitolo {
+    color: var(--grigio);
+    margin-bottom: 20px;
+}
+
+.link-back {
+    display: inline-block;
+    font-size: 0.9rem;
+    margin-bottom: 14px;
+}
+
+.ruolo {
+    display: inline-block;
+    background: var(--colore-chiaro);
+    color: var(--colore);
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+/* Scelta profilo */
+.scelta-ruoli {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+}
+
+.scelta-ruoli a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    border-radius: var(--raggio);
+    border: 2px solid var(--bordo);
+    color: var(--testo);
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.scelta-ruoli a:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: var(--ombra);
+}
+
+.scelta-ruoli small {
+    display: block;
+    font-weight: 400;
+    color: var(--grigio);
+}
+
+.scelta-ruoli .icona {
+    font-size: 2rem;
+}
+
+.btn-ruolo-studente:hover { border-color: #2563eb; background: #dbeafe; }
+.btn-ruolo-docente:hover  { border-color: #16a34a; background: #dcfce7; }
+.btn-ruolo-genitore:hover { border-color: #ea580c; background: #ffedd5; }
+
+/* Form */
+.campo {
+    margin-bottom: 14px;
+}
+
+.campo label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--bordo);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: var(--bianco);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--colore);
+    border-color: transparent;
+}
+
+.psw {
+    position: relative;
+}
+
+.psw input {
+    padding-right: 44px;
+}
+
+.mostra-psw {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.riga-opzioni {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+}
+
+.ricordami input {
+    width: auto;
+    margin-right: 4px;
+}
+
+/* Bottoni */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 11px;
+    background: var(--colore);
+    color: var(--bianco);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    text-decoration: none;
+}
+
+.btn-piccolo {
+    display: inline-block;
+    width: auto;
+    padding: 6px 14px;
+    font-size: 0.9rem;
+}
+
+.btn-spid { background: #0066cc; }
+.btn-cie  { background: #1f2937; }
+
+.messaggi {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: var(--rosso);
+}
+
+.separatore {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--grigio);
+    font-size: 0.85rem;
+    margin: 18px 0;
+}
+
+.separatore::before,
+.separatore::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--bordo);
+}
+
+.accesso-esterno {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nota-demo {
+    margin-top: 20px;
+    padding: 10px;
+    background: var(--colore-chiaro);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+/* ---------- 3. DASHBOARD: STRUTTURA ---------- */
+body.dashboard {
+    min-height: 100vh;
+}
+
+/* Barra in alto */
+.barra-alto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background: var(--colore);
+    color: var(--bianco);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.barra-alto .titolo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.barra-alto .utente {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.95rem;
+}
+
+.barra-alto a {
+    color: var(--bianco);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.barra-alto a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+}
+
+/* Corpo: menu laterale + contenuto */
+.contenitore {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    min-height: calc(100vh - 56px);
+}
+
+.menu-laterale {
+    background: var(--bianco);
+    border-right: 1px solid var(--bordo);
+    padding: 20px 12px;
+}
+
+.menu-laterale ul {
+    list-style: none;
+}
+
+.menu-laterale li a {
+    display: block;
+    padding: 10px 14px;
+    border-radius: 8px;
+    color: var(--testo);
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.menu-laterale li a:hover,
+.menu-laterale li a.attivo {
+    background: var(--colore-chiaro);
+    color: var(--colore);
+    text-decoration: none;
+}
+
+.contenuto {
+    padding: 24px;
+}
+
+.contenuto > section {
+    margin-bottom: 28px;
+    scroll-margin-top: 76px;
+}
+
+.benvenuto {
+    margin-bottom: 20px;
+}
+
+.benvenuto p {
+    color: var(--grigio);
+}
+
+/* ---------- 4. DASHBOARD: COMPONENTI ---------- */
+
+/* Riquadri con i numeri riassuntivi */
+.riepilogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+    margin-bottom: 28px;
+}
+
+.dato {
+    background: var(--bianco);
+    border-radius: var(--raggio);
+    box-shadow: var(--ombra);
+    padding: 16px;
+    border-left: 5px solid var(--colore);
+}
+
+.dato .numero {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--colore);
+}
+
+.dato .etichetta {
+    color: var(--grigio);
+    font-size: 0.9rem;
+}
+
+/* Schede (card) in griglia */
+.griglia {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 18px;
+}
+
+.scheda {
+    background: var(--bianco);
+    border-radius: var(--raggio);
+    box-shadow: var(--ombra);
+    padding: 20px;
+}
+
+.scheda h2 {
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--colore-chiaro);
+}
+
+/* Tabelle */
+.contenitore-tabella {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+th, td {
+    padding: 9px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--bordo);
+}
+
+th {
+    background: var(--colore-chiaro);
+    color: var(--colore);
+    font-weight: 600;
+}
+
+tr:hover td {
+    background: #fafafa;
+}
+
+/* Voti */
+.voto {
+    display: inline-block;
+    min-width: 40px;
+    text-align: center;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    color: var(--bianco);
+}
+
+.voto-alto  { background: var(--verde); }
+.voto-medio { background: var(--giallo); }
+.voto-basso { background: var(--rosso); }
+
+/* Etichette di stato */
+.badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge-ok     { background: #dcfce7; color: #166534; }
+.badge-attesa { background: #fef3c7; color: #92400e; }
+.badge-no     { background: #fee2e2; color: #991b1b; }
+
+/* Liste (compiti, comunicazioni, agenda) */
+.lista {
+    list-style: none;
+}
+
+.lista li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--bordo);
+}
+
+.lista li:last-child {
+    border-bottom: none;
+}
+
+.lista .data {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--grigio);
+}
+
+.lista strong {
+    display: block;
+}
+
+/* Orario */
+.orario td:first-child {
+    font-weight: 600;
+    color: var(--colore);
+    width: 90px;
+}
+
+/* Form dentro le dashboard */
+.form-riga {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+/* Piè di pagina */
+footer {
+    text-align: center;
+    padding: 16px;
+    color: var(--grigio);
+    font-size: 0.85rem;
+}
+
+/* ---------- 5. RESPONSIVE ---------- */
+@media (max-width: 800px) {
+    .contenitore {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-laterale {
+        border-right: none;
+        border-bottom: 1px solid var(--bordo);
+        padding: 10px;
+    }
+
+    .menu-laterale ul {
+        display: flex;
+        gap: 6px;
+        overflow-x: auto;
+    }
+
+    .menu-laterale li a {
+        white-space: nowrap;
+        margin-bottom: 0;
+    }
+
+    .barra-alto {
+        padding: 10px 14px;
+    }
+
+    .barra-alto .utente span {
+        display: none;
+    }
+
+    .griglia {
+        grid-template-columns: 1fr;
+    }
+
+    .contenuto {
+        padding: 16px;
+    }
+}

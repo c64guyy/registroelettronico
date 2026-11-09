@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Dashboard Studente - RED</title>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="icon" href="assets/favicon/favicon.ico">
+    </head>
+    <body class="dashboard dash_studente">
+
+        <header class="barra-alto">
+            <div class="titolo">RED</div>
+            <div class="utente">
+                <span>🎓 Giulia Bianchi - 3A</span>
+                <a href="index.html">Esci</a>
+            </div>
+        </header>
+
+        <div class="contenitore">
+            <nav class="menu-laterale" aria-label="Menu studente">
+                <ul>
+                    <li><a href="#home" class="attivo">🏠 Home</a></li>
+                    <li><a href="#voti">📝 Voti</a></li>
+                    <li><a href="#compiti">📚 Compiti</a></li>
+                    <li><a href="#orario">🕒 Orario</a></li>
+                    <li><a href="#assenze">📅 Assenze</a></li>
+                    <li><a href="#comunicazioni">📢 Comunicazioni</a></li>
+                </ul>
+            </nav>
+
+            <main class="contenuto">
+                <section id="home" class="benvenuto">
+                    <h1>Ciao, Giulia! 👋</h1>
+                    <p>Ecco il riepilogo della tua giornata.</p>
+                </section>
+
+                <section class="riepilogo">
+                    <div class="dato">
+                        <span class="numero">7,8</span>
+                        <span class="etichetta">Media generale</span>
+                    </div>
+                    <div class="dato">
+                        <span class="numero">3</span>
+                        <span class="etichetta">Compiti da consegnare</span>
+                    </div>
+                    <div class="dato">
+                        <span class="numero">4</span>
+                        <span class="etichetta">Assenze</span>
+                    </div>
+                    <div class="dato">
+                        <span class="numero">2</span>
+                        <span class="etichetta">Nuove comunicazioni</span>
+                    </div>
+                </section>
+
+                <section id="voti" class="scheda">
+                    <h2>📝 Ultimi voti</h2>
+                    <div class="contenitore-tabella">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Materia</th>
+                                    <th>Tipo</th>
+                                    <th>Voto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>28/10/2026</td>
+                                    <td>Matematica</td>
+                                    <td>Scritto</td>
+                                    <td><span class="voto voto-alto">8</span></td>
+                                </tr>
+                                <tr>
+                                    <td>27/10/2026</td>
+                                    <td>Italiano</td>
+                                    <td>Orale</td>
+                                    <td><span class="voto voto-alto">7,5</span></td>
+                                </tr>
+                                <tr>
+                                    <td>24/10/2026</td>
+                                    <td>Inglese</td>
+                                    <td>Scritto</td>
+                                    <td><span class="voto voto-medio">6</span></td>
+                                </tr>
+                                <tr>
+                                    <td>22/10/2026</td>
+                                    <td>Storia</td>
+                                    <td>Orale</td>
+                                    <td><span class="voto voto-basso">5</span></td>
+                                </tr>
+                                <tr>
+                                    <td>20/10/2026</td>
+                                    <td>Scienze</td>
+                                    <td>Pratico</td>
+                                    <td><span class="voto voto-alto">9</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="griglia">
+                    <div id="compiti" class="scheda">
+                        <h2>📚 Compiti assegnati</h2>
+                        <ul class="lista">
+                            <li>
+                                <span class="data">Per il 03/11/2026</span>
+                                <strong>Matematica</strong>
+                                Esercizi pag. 142 n. 1-10
+                            </li>
+                            <li>
+                                <span class="data">Per il 04/11/2026</span>
+                                <strong>Inglese</strong>
+                                Scrivere un testo di 100 parole sulle vacanze
+                            </li>
+                            <li>
+                                <span class="data">Per il 06/11/2026</span>
+                                <strong>Storia</strong>
+                                Studiare il capitolo 4
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div id="orario" class="scheda">
+                        <h2>🕒 Orario di domani</h2>
+                        <table class="orario">
+                            <tbody>
+                                <tr><td>8:00</td><td>Italiano</td></tr>
+                                <tr><td>9:00</td><td>Matematica</td></tr>
+                                <tr><td>10:00</td><td>Inglese</td></tr>
+                                <tr><td>11:00</td><td>Intervallo</td></tr>
+                                <tr><td>11:15</td><td>Storia</td></tr>
+                                <tr><td>12:15</td><td>Scienze</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="assenze" class="scheda">
+                    <h2>📅 Assenze e ritardi</h2>
+                    <div class="contenitore-tabella">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Tipo</th>
+                                    <th>Stato</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>30/10/2026</td>
+                                    <td>Assenza</td>
+                                    <td><span class="badge badge-attesa">Da giustificare</span></td>
+                                </tr>
+                                <tr>
+                                    <td>15/10/2026</td>
+                                    <td>Ritardo</td>
+                                    <td><span class="badge badge-ok">Giustificato</span></td>
+                                </tr>
+                                <tr>
+                                    <td>08/10/2026</td>
+                                    <td>Assenza</td>
+                                    <td><span class="badge badge-ok">Giustificato</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="comunicazioni" class="scheda">
+                    <h2>📢 Comunicazioni dalla scuola</h2>
+                    <ul class="lista">
+                        <li>
+                            <span class="data">31/10/2026</span>
+                            <strong>Uscita didattica al museo</strong>
+                            Consegnare l'autorizzazione firmata entro venerdì.
+                        </li>
+                        <li>
+                            <span class="data">29/10/2026</span>
+                            <strong>Assemblea di istituto</strong>
+                            Lunedì 9 novembre, le lezioni terminano alle 11:00.
+                        </li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+
+        <footer>RED - Registro Elettronico Digitale</footer>
+    </body>
+</html>
