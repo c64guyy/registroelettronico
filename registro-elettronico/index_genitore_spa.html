@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Acceso Padres - RED </title>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="icon" href="assets/favicon/favicon.ico">
+    </head>
+    <body class="login_genitore">
+        <div class="scheda-login">
+            <a href="index.html" class="link-back">Cambiar perfil</a>
+            <div class="ruolo">🧑‍🧑‍🧒‍🧒 Padre/Madre</div>
+            <h1>Acceso Padres</h1>
+            <p class="sottotitolo">Inicia sesión con las credenciales del padre/madre.</p>
+
+
+            <div class="campo">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" placeholder="padre/madre@mail.it">
+            </div>
+
+
+            <div class="campo">
+                <label for="password">Contraseña</label>
+                <div class="psw">
+                    <input type="password" id="password" name="password" placeholder="Contraseña" onkeydown="if (event.key() === 'Enter') login()">
+                    <button type="button" class="mostra-psw" id="mostra-psw" onclick="mostraPsw()" aria-label="Mostrar contraseña">👁️</button>
+                </div>
+            </div>
+
+
+            <div class="riga-opzioni">
+                <label class="ricordami" for="btnRicordami">
+                    <input type="checkbox" id="btnRicordami" name="ricordami">
+                    ¡Recuérdame!
+                </label>
+                <a href="recuper_psw.html" class="link-password">¿Olvidaste tu contraseña?</a>
+            </div>
+
+
+            <button type="button" class="btn" onclick="login()">Iniciar sesión</button>
+            <div id="messaggi" class="messaggi"></div>
+
+
+
+            <div class="separatore">o</div>
+            <div class="accesso-esterno">
+                <a class="btn btn-spid" href="https://spid.governo.it/" target="_blank" rel="noopener noreferrer">Entrar con SPID</a>
+                <a class="btn btn-cie" href="https://idserver.servizicie.interno.gov.it/idp/login/livello2?opId=ID2c2d7368-824e-4b0d-8a24-bee6c2126b3c&challenge=cAsYN9CrjM3ml6B3%2FkbNL%2Fz26apQ19j1VETvJaUb&level=2&SPName=https%3A%2F%2Fspid.anpr.interno.it&SPLogo=https%3A%2F%2Fidserver.servizicie.interno.gov.it%2Fidp%2Fimages%2Fcielogo.png&value=e1s2" target="_blank" rel="noopener noreferrer">Entrar con CIE</a>
+            </div>
+
+
+            <p class="nota-demo">
+                 Credenciales de prueba (Padre/Madre):<br>
+                <strong>genitore@mail.it</strong> / <strong>Genitore1!</strong>
+            </p>
+        </div>
+    </body>
+</html>

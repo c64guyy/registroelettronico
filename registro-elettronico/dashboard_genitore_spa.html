@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Panel del padre/madre - RED</title>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="icon" href="assets/favicon/favicon.ico">
+    </head>
+    <body class="dashboard dash_genitore">
+
+
+        <header class="barra-alto">
+            <div class="titolo">RED</div>
+            <div class="utente">
+                <span>👪 Padre/Madre de Giulia Bianchi</span>
+                <a href="index.html">Salir</a>
+            </div>
+        </header>
+
+
+        <div class="contenitore">
+            <nav class="menu-laterale" aria-label="Menú del padre/madre">
+                <ul>
+                    <li><a href="#home" class="attivo">🏠 Inicio</a></li>
+                    <li><a href="#voti">📝 Calificaciones</a></li>
+                    <li><a href="#assenze">📅 Ausencias</a></li>
+                    <li><a href="#compiti">📚 Tareas</a></li>
+                    <li><a href="#colloqui">🤝 Reuniones</a></li>
+                    <li><a href="#comunicazioni">📢 Comunicados</a></li>
+                </ul>
+            </nav>
+
+
+            <main class="contenuto">
+                <section id="home" class="benvenuto">
+                    <h1>¡Bienvenido/a! 👋</h1>
+                    <p>Estás viendo los datos de <strong>Giulia Bianchi</strong>, clase 3A.</p>
+                </section>
+
+
+                <section class="riepilogo">
+                    <div class="dato">
+                        <span class="numero">7,8</span>
+                        <span class="etichetta">Promedio general</span>
+                    </div>
+                    <div class="dato">
+                        <span class="numero">1</span>
+                        <span class="etichetta">Ausencia por justificar</span>
+                    </div>
+                    <div class="dato">
+                        <span class="numero">3</span>
+                        <span class="etichetta">Tareas pendientes</span>
+                    </div>
+                    <div class="dato">
+                        <span class="numero">2</span>
+                        <span class="etichetta">Comunicados por leer</span>
+                    </div>
+                </section>
+
+
+                <section id="voti" class="scheda">
+                    <h2>📝 Calificaciones de Giulia</h2>
+                    <div class="contenitore-tabella">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Asignatura</th>
+                                    <th>Última calificación</th>
+                                    <th>Promedio</th>
+                                    <th>Docente</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Matemáticas</td>
+                                    <td><span class="voto voto-alto">8</span></td>
+                                    <td>7,8</td>
+                                    <td>Rossi</td>
+                                </tr>
+                                <tr>
+                                    <td>Italiano</td>
+                                    <td><span class="voto voto-alto">7,5</span></td>
+                                    <td>7,3</td>
+                                    <td>Verdi</td>
+                                </tr>
+                                <tr>
+                                    <td>Inglés</td>
+                                    <td><span class="voto voto-medio">6</span></td>
+                                    <td>6,5</td>
+                                    <td>Neri</td>
+                                </tr>
+                                <tr>
+                                    <td>Historia</td>
+                                    <td><span class="voto voto-basso">5</span></td>
+                                    <td>5,8</td>
+                                    <td>Gialli</td>
+                                </tr>
+                                <tr>
+                                    <td>Ciencias</td>
+                                    <td><span class="voto voto-alto">9</span></td>
+                                    <td>8,6</td>
+                                    <td>Blu</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+
+                <section id="assenze" class="scheda">
+                    <h2>📅 Ausencias y justificantes</h2>
+                    <div class="contenitore-tabella">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Tipo</th>
+                                    <th>Estado</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>30/10/2026</td>
+                                    <td>Ausencia</td>
+                                    <td><span class="badge badge-attesa">Pendiente de justificar</span></td>
+                                    <td><button type="button" class="btn btn-piccolo">Justificar</button></td>
+                                </tr>
+                                <tr>
+                                    <td>15/10/2026</td>
+                                    <td>Retraso</td>
+                                    <td><span class="badge badge-ok">Justificada</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>08/10/2026</td>
+                                    <td>Ausencia</td>
+                                    <td><span class="badge badge-ok">Justificada</span></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+
+                <section class="griglia">
+                    <div id="compiti" class="scheda">
+                        <h2>📚 Tareas pendientes</h2>
+                        <ul class="lista">
+                            <li>
+                                <span class="data">Para el 03/11/2026</span>
+                                <strong>Matemáticas</strong>
+                                Ejercicios de la página 142, n.º 1-10
+                            </li>
+                            <li>
+                                <span class="data">Para el 04/11/2026</span>
+                                <strong>Inglés</strong>
+                                Texto de 100 palabras sobre las vacaciones
+                            </li>
+                            <li>
+                                <span class="data">Para el 06/11/2026</span>
+                                <strong>Historia</strong>
+                                Estudiar el capítulo 4
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <div id="colloqui" class="scheda">
+                        <h2>🤝 Reuniones con los docentes</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Docente</th>
+                                    <th>Fecha</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Prof. Rossi</td>
+                                    <td>12/11 - 15:30</td>
+                                    <td><span class="badge badge-ok">Confirmada</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Prof.ª Gialli</td>
+                                    <td>19/11 - 16:00</td>
+                                    <td><span class="badge badge-attesa">Pendiente</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <button type="button" class="btn btn-piccolo">Reservar una reunión</button>
+                    </div>
+                </section>
+
+
+                <section id="comunicazioni" class="scheda">
+                    <h2>📢 Comunicados del colegio</h2>
+                    <ul class="lista">
+                        <li>
+                            <span class="data">31/10/2026</span>
+                            <strong>Salida educativa al museo</strong>
+                            Firmar la autorización y entregarla antes del viernes.
+                        </li>
+                        <li>
+                            <span class="data">29/10/2026</span>
+                            <strong>Asamblea de centro</strong>
+                            El lunes 9 de noviembre las clases terminan a las 11:00.
+                        </li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+
+
+        <footer>RED - Registro Electrónico Digital</footer>
+    </body>
+</html>

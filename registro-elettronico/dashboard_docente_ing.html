@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Teacher Dashboard - RED</title>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="icon" href="assets/favicon/favicon.ico">
+    </head>
+    <body class="dashboard dash_docente">
+
+
+        <header class="barra-alto">
+            <div class="titolo">RED</div>
+            <div class="utente">
+                <span>🧑‍🏫 Mr. Marco Rossi</span>
+                <a href="index.html">Log out</a>
+            </div>
+        </header>
+
+
+        <div class="contenitore">
+            <nav class="menu-laterale" aria-label="Teacher menu">
+                <ul>
+                    <li><a href="#home" class="attivo">🏠 Home</a></li>
+                    <li><a href="#classi">🏫 My classes</a></li>
+                    <li><a href="#appello">✅ Attendance</a></li>
+                    <li><a href="#nuovo-voto">📝 Enter a grade</a></li>
+                    <li><a href="#compiti">📚 Homework</a></li>
+                    <li><a href="#agenda">🗓️ Agenda</a></li>
+                </ul>
+            </nav>
+
+
+            <main class="contenuto">
+                <section id="home" class="benvenuto">
+                    <h1>Good morning, Mr. Rossi! 👋</h1>
+                    <p>Here is what is scheduled for today.</p>
+                </section>
+
+
+                <section class="riepilogo">
+                    <div class="dato">
+                        <span class="numero">4</span>
+                        <span class="etichetta">Classes</span>
+                    </div>
+                    <div class="dato">
+                        <span class="numero">92</span>
+                        <span class="etichetta">Students</span>
+                    </div>
+                    <div class="dato">
+                        <span class="numero">3</span>
+                        <span class="etichetta">Lessons today</span>
+                    </div>
+                    <div class="dato">
+                        <span class="numero">12</span>
+                        <span class="etichetta">Assignments to grade</span>
+                    </div>
+                </section>
+
+
+                <section id="classi" class="scheda">
+                    <h2>🏫 My classes</h2>
+                    <div class="contenitore-tabella">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Class</th>
+                                    <th>Subject</th>
+                                    <th>Students</th>
+                                    <th>Class average</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1A</td>
+                                    <td>Mathematics</td>
+                                    <td>22</td>
+                                    <td><span class="voto voto-alto">7.2</span></td>
+                                    <td><a href="#">Open</a></td>
+                                </tr>
+                                <tr>
+                                    <td>2B</td>
+                                    <td>Mathematics</td>
+                                    <td>24</td>
+                                    <td><span class="voto voto-medio">6.4</span></td>
+                                    <td><a href="#">Open</a></td>
+                                </tr>
+                                <tr>
+                                    <td>3A</td>
+                                    <td>Mathematics</td>
+                                    <td>23</td>
+                                    <td><span class="voto voto-alto">7.8</span></td>
+                                    <td><a href="#">Open</a></td>
+                                </tr>
+                                <tr>
+                                    <td>4C</td>
+                                    <td>Physics</td>
+                                    <td>23</td>
+                                    <td><span class="voto voto-basso">5.9</span></td>
+                                    <td><a href="#">Open</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+
+                <section class="griglia">
+                    <div id="appello" class="scheda">
+                        <h2>✅ Attendance - 3A</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Student</th>
+                                    <th>Present</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Bianchi Giulia</td>
+                                    <td><input type="checkbox" checked></td>
+                                </tr>
+                                <tr>
+                                    <td>Conti Luca</td>
+                                    <td><input type="checkbox" checked></td>
+                                </tr>
+                                <tr>
+                                    <td>Ferrari Sara</td>
+                                    <td><input type="checkbox"></td>
+                                </tr>
+                                <tr>
+                                    <td>Greco Matteo</td>
+                                    <td><input type="checkbox" checked></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <button type="button" class="btn btn-piccolo">Save attendance</button>
+                    </div>
+
+
+                    <div id="nuovo-voto" class="scheda">
+                        <h2>📝 Enter a grade</h2>
+                        <div class="campo">
+                            <label for="classe">Class</label>
+                            <select id="classe" name="classe">
+                                <option>1A</option>
+                                <option>2B</option>
+                                <option selected>3A</option>
+                                <option>4C</option>
+                            </select>

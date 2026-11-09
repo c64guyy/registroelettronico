@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Student Dashboard - RED</title>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="icon" href="assets/favicon/favicon.ico">
+    </head>
+    <body class="dashboard dash_studente">
+
+
+        <header class="barra-alto">
+            <div class="titolo">RED</div>
+            <div class="utente">
+                <span>🎓 Giulia Bianchi - 3A</span>
+                <a href="index.html">Log out</a>
+            </div>
+        </header>
+
+
+        <div class="contenitore">
+            <nav class="menu-laterale" aria-label="Student menu">
+                <ul>
+                    <li><a href="#home" class="attivo">🏠 Home</a></li>
+                    <li><a href="#voti">📝 Grades</a></li>
+                    <li><a href="#compiti">📚 Homework</a></li>
+                    <li><a href="#orario">🕒 Timetable</a></li>
+                    <li><a href="#assenze">📅 Absences</a></li>
+                    <li><a href="#comunicazioni">📢 Notices</a></li>
+                </ul>
+            </nav>
+
+
+            <main class="contenuto">
+                <section id="home" class="benvenuto">
+                    <h1>Hi, Giulia! 👋</h1>
+                    <p>Here is a summary of your day.</p>
+                </section>
+
+
+                <section class="riepilogo">
+                    <div class="dato">
+                        <span class="numero">7.8</span>
+                        <span class="etichetta">Overall average</span>
+                    </div>
+                    <div class="dato">
+                        <span class="numero">3</span>
+                        <span class="etichetta">Homework to submit</span>
+                    </div>
+                    <div class="dato">
+                        <span class="numero">4</span>
+                        <span class="etichetta">Absences</span>
+                    </div>
+                    <div class="dato">
+                        <span class="numero">2</span>
+                        <span class="etichetta">New notices</span>
+                    </div>
+                </section>
+
+
+                <section id="voti" class="scheda">
+                    <h2>📝 Latest grades</h2>
+                    <div class="contenitore-tabella">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Subject</th>
+                                    <th>Type</th>
+                                    <th>Grade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>28/10/2026</td>
+                                    <td>Mathematics</td>
+                                    <td>Written</td>
+                                    <td><span class="voto voto-alto">8</span></td>
+                                </tr>
+                                <tr>
+                                    <td>27/10/2026</td>
+                                    <td>Italian</td>
+                                    <td>Oral</td>
+                                    <td><span class="voto voto-alto">7.5</span></td>
+                                </tr>
+                                <tr>
+                                    <td>24/10/2026</td>
+                                    <td>English</td>
+                                    <td>Written</td>
+                                    <td><span class="voto voto-medio">6</span></td>
+                                </tr>
+                                <tr>
+                                    <td>22/10/2026</td>
+                                    <td>History</td>
+                                    <td>Oral</td>
+                                    <td><span class="voto voto-basso">5</span></td>
+                                </tr>
+                                <tr>
+                                    <td>20/10/2026</td>
+                                    <td>Science</td>
+                                    <td>Practical</td>
+                                    <td><span class="voto voto-alto">9</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+
+                <section class="griglia">
+                    <div id="compiti" class="scheda">
+                        <h2>📚 Assigned homework</h2>
+                        <ul class="lista">
+                            <li>
+                                <span class="data">Due on 03/11/2026</span>
+                                <strong>Mathematics</strong>
+                                Exercises page 142, nos. 1-10
+                            </li>
+                            <li>
+                                <span class="data">Due on 04/11/2026</span>
+                                <strong>English</strong>
+                                Write a 100-word text about your holiday
+                            </li>
+                            <li>
+                                <span class="data">Due on 06/11/2026</span>
+                                <strong>History</strong>
+                                Study chapter 4
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <div id="orario" class="scheda">
+                        <h2>🕒 Tomorrow's timetable</h2>
+                        <table class="orario">
+                            <tbody>
+                                <tr><td>8:00</td><td>Italian</td></tr>
+                                <tr><td>9:00</td><td>Mathematics</td></tr>
+                                <tr><td>10:00</td><td>English</td></tr>
+                                <tr><td>11:00</td><td>Break</td></tr>
+                                <tr><td>11:15</td><td>History</td></tr>
+                                <tr><td>12:15</td><td>Science</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+
+                <section id="assenze" class="scheda">
+                    <h2>📅 Absences and lateness</h2>
+                    <div class="contenitore-tabella">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>30/10/2026</td>
+                                    <td>Absence</td>
+                                    <td><span class="badge badge-attesa">To be justified</span></td>
+                                </tr>
+                                <tr>
+                                    <td>15/10/2026</td>
+                                    <td>Late arrival</td>
+                                    <td><span class="badge badge-ok">Justified</span></td>
+                                </tr>
+                                <tr>
+                                    <td>08/10/2026</td>
+                                    <td>Absence</td>
+                                    <td><span class="badge badge-ok">Justified</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+
+                <section id="comunicazioni" class="scheda">
+                    <h2>📢 Notices from school</h2>
+                    <ul class="lista">
+                        <li>
+                            <span class="data">31/10/2026</span>
+                            <strong>Educational trip to the museum</strong>
+                            Submit the signed permission form by Friday.
+                        </li>
+                        <li>
+                            <span class="data">29/10/2026</span>
+                            <strong>School assembly</strong>
+                            On Monday 9 November, lessons end at 11:00.
+                        </li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+
+
+        <footer>RED - Digital Electronic Register</footer>
+    </body>
+</html>
