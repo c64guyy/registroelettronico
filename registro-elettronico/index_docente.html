@@ -6,6 +6,8 @@
         <title>Accesso Docenti - RED </title>
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="icon" href="assets/favicon/favicon.ico">
+        <script defer src="assets/js/storage.js"></script>
+        <script defer src="assets/js/login.js"></script>
     </head>
     <body class="login_docente">
         <div class="scheda-login">
@@ -22,7 +24,7 @@
             <div class="campo">
                 <label for="password">Password</label>
                 <div class="psw">
-                    <input type="password" id="password" name="password" placeholder="Password" onkeydown="if (event.key() === 'Enter') login()">
+                    <input type="password" id="password" name="password" placeholder="Password" onkeydown="invioPassword(event)">
                     <button type="button" class="mostra-psw" id="mostra-psw" onclick="mostraPsw()" aria-label="Mostra password">👁️</button>
                 </div>
             </div>

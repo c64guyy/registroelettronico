@@ -6,14 +6,17 @@
         <title>Dashboard Genitore - RED</title>
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="icon" href="assets/favicon/favicon.ico">
+        <script defer src="assets/js/storage.js"></script>
+        <script defer src="assets/js/vista-studente.js"></script>
+        <script defer src="assets/js/genitore.js"></script>
     </head>
     <body class="dashboard dash_genitore">
 
         <header class="barra-alto">
             <div class="titolo">RED</div>
             <div class="utente">
-                <span>👪 Genitore di Giulia Bianchi</span>
-                <a href="index.html">Esci</a>
+                <span>👪 <span id="nome-utente"></span></span>
+                <a href="#" onclick="esci()">Esci</a>
             </div>
         </header>
 
@@ -22,9 +25,8 @@
                 <ul>
                     <li><a href="#home" class="attivo">🏠 Home</a></li>
                     <li><a href="#voti">📝 Voti</a></li>
-                    <li><a href="#assenze">📅 Assenze</a></li>
                     <li><a href="#compiti">📚 Compiti</a></li>
-                    <li><a href="#colloqui">🤝 Colloqui</a></li>
+                    <li><a href="#assenze">📅 Assenze</a></li>
                     <li><a href="#comunicazioni">📢 Comunicazioni</a></li>
                 </ul>
             </nav>
@@ -32,78 +34,52 @@
             <main class="contenuto">
                 <section id="home" class="benvenuto">
                     <h1>Benvenuto! 👋</h1>
-                    <p>Stai visualizzando i dati di <strong>Giulia Bianchi</strong>, classe 3A.</p>
+                    <p>Stai visualizzando i dati di tuo figlio/a. <span id="avviso"></span></p>
                 </section>
 
                 <section class="riepilogo">
                     <div class="dato">
-                        <span class="numero">7,8</span>
+                        <span class="numero" id="tot-media">-</span>
                         <span class="etichetta">Media generale</span>
                     </div>
                     <div class="dato">
-                        <span class="numero">1</span>
-                        <span class="etichetta">Assenza da giustificare</span>
+                        <span class="numero" id="tot-compiti">0</span>
+                        <span class="etichetta">Compiti da consegnare</span>
                     </div>
                     <div class="dato">
-                        <span class="numero">3</span>
-                        <span class="etichetta">Compiti in scadenza</span>
+                        <span class="numero" id="tot-assenze">0</span>
+                        <span class="etichetta">Assenze da giustificare</span>
                     </div>
                     <div class="dato">
-                        <span class="numero">2</span>
-                        <span class="etichetta">Comunicazioni da leggere</span>
+                        <span class="numero" id="tot-comunicazioni">0</span>
+                        <span class="etichetta">Comunicazioni</span>
                     </div>
                 </section>
 
                 <section id="voti" class="scheda">
-                    <h2>📝 Voti di Giulia</h2>
+                    <h2>📝 Voti</h2>
                     <div class="contenitore-tabella">
                         <table>
                             <thead>
                                 <tr>
+                                    <th>Data</th>
                                     <th>Materia</th>
-                                    <th>Ultimo voto</th>
-                                    <th>Media</th>
-                                    <th>Docente</th>
+                                    <th>Tipo</th>
+                                    <th>Voto</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Matematica</td>
-                                    <td><span class="voto voto-alto">8</span></td>
-                                    <td>7,8</td>
-                                    <td>Rossi</td>
-                                </tr>
-                                <tr>
-                                    <td>Italiano</td>
-                                    <td><span class="voto voto-alto">7,5</span></td>
-                                    <td>7,3</td>
-                                    <td>Verdi</td>
-                                </tr>
-                                <tr>
-                                    <td>Inglese</td>
-                                    <td><span class="voto voto-medio">6</span></td>
-                                    <td>6,5</td>
-                                    <td>Neri</td>
-                                </tr>
-                                <tr>
-                                    <td>Storia</td>
-                                    <td><span class="voto voto-basso">5</span></td>
-                                    <td>5,8</td>
-                                    <td>Gialli</td>
-                                </tr>
-                                <tr>
-                                    <td>Scienze</td>
-                                    <td><span class="voto voto-alto">9</span></td>
-                                    <td>8,6</td>
-                                    <td>Blu</td>
-                                </tr>
-                            </tbody>
+                            <tbody id="tabella-voti"></tbody>
                         </table>
                     </div>
                 </section>
 
+                <section id="compiti" class="scheda">
+                    <h2>📚 Compiti assegnati</h2>
+                    <ul class="lista" id="lista-compiti"></ul>
+                </section>
+
                 <section id="assenze" class="scheda">
-                    <h2>📅 Assenze e giustificazioni</h2>
+                    <h2>📅 Assenze e ritardi</h2>
                     <div class="contenitore-tabella">
                         <table>
                             <thead>
@@ -114,94 +90,14 @@
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>30/10/2026</td>
-                                    <td>Assenza</td>
-                                    <td><span class="badge badge-attesa">Da giustificare</span></td>
-                                    <td><button type="button" class="btn btn-piccolo">Giustifica</button></td>
-                                </tr>
-                                <tr>
-                                    <td>15/10/2026</td>
-                                    <td>Ritardo</td>
-                                    <td><span class="badge badge-ok">Giustificato</span></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>08/10/2026</td>
-                                    <td>Assenza</td>
-                                    <td><span class="badge badge-ok">Giustificato</span></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
+                            <tbody id="tabella-assenze"></tbody>
                         </table>
-                    </div>
-                </section>
-
-                <section class="griglia">
-                    <div id="compiti" class="scheda">
-                        <h2>📚 Compiti in scadenza</h2>
-                        <ul class="lista">
-                            <li>
-                                <span class="data">Per il 03/11/2026</span>
-                                <strong>Matematica</strong>
-                                Esercizi pag. 142 n. 1-10
-                            </li>
-                            <li>
-                                <span class="data">Per il 04/11/2026</span>
-                                <strong>Inglese</strong>
-                                Testo di 100 parole sulle vacanze
-                            </li>
-                            <li>
-                                <span class="data">Per il 06/11/2026</span>
-                                <strong>Storia</strong>
-                                Studiare il capitolo 4
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div id="colloqui" class="scheda">
-                        <h2>🤝 Colloqui con i docenti</h2>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Docente</th>
-                                    <th>Data</th>
-                                    <th>Stato</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Prof. Rossi</td>
-                                    <td>12/11 - 15:30</td>
-                                    <td><span class="badge badge-ok">Confermato</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Prof.ssa Gialli</td>
-                                    <td>19/11 - 16:00</td>
-                                    <td><span class="badge badge-attesa">In attesa</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <br>
-                        <button type="button" class="btn btn-piccolo">Prenota un colloquio</button>
                     </div>
                 </section>
 
                 <section id="comunicazioni" class="scheda">
                     <h2>📢 Comunicazioni dalla scuola</h2>
-                    <ul class="lista">
-                        <li>
-                            <span class="data">31/10/2026</span>
-                            <strong>Uscita didattica al museo</strong>
-                            Firmare l'autorizzazione e consegnarla entro venerdì.
-                        </li>
-                        <li>
-                            <span class="data">29/10/2026</span>
-                            <strong>Assemblea di istituto</strong>
-                            Lunedì 9 novembre le lezioni terminano alle 11:00.
-                        </li>
-                    </ul>
+                    <ul class="lista" id="lista-comunicazioni"></ul>
                 </section>
             </main>
         </div>
