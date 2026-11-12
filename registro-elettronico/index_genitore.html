@@ -14,7 +14,7 @@
             <a href="index.html" class="link-back">Cambia profilo</a>
             <div class="ruolo">🧑‍🧑‍🧒‍🧒 Genitore</div>
             <h1>Accesso Genitori</h1>
-            <p class="sottotitolo">Accedi con le credenziali del genitore.</p>
+            <p class="sottotitolo">Accedi con le credenziali del genitore e l'email dell'alunno.</p>
 
             <div class="campo">
                 <label for="email">Email</label>
@@ -27,6 +27,11 @@
                     <input type="password" id="password" name="password" placeholder="Password" onkeydown="invioPassword(event)">
                     <button type="button" class="mostra-psw" id="mostra-psw" onclick="mostraPsw()" aria-label="Mostra password">👁️</button>
                 </div>
+            </div>
+
+            <div class="campo">
+                <label for="email-alunno">Email dell'alunno</label>
+                <input type="email" id="email-alunno" name="email-alunno" placeholder="studente@mail.it" onkeydown="invioPassword(event)">
             </div>
 
             <div class="riga-opzioni">
@@ -49,7 +54,8 @@
 
             <p class="nota-demo">
                  Credenziali di prova (Genitore):<br>
-                <strong>genitore@mail.it</strong> / <strong>Genitore1!</strong>
+                <strong>genitore@mail.it</strong> / <strong>Genitore1!</strong><br>
+                Email alunno: <strong>studente@mail.it</strong> (deve averlo aggiunto il docente)
             </p>
         </div>
     </body>

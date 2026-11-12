@@ -14,7 +14,7 @@
         <header class="barra-alto">
             <div class="titolo">RED</div>
             <div class="utente">
-                <span>🧑‍🏫 Prof. <span id="nome-utente"></span></span>
+                <span>🧑‍🏫 Docente</span>
                 <a href="#" onclick="esci()">Esci</a>
             </div>
         </header>
@@ -34,7 +34,7 @@
 
             <main class="contenuto">
                 <section id="home" class="benvenuto">
-                    <h1>Buongiorno, prof. <span id="nome-benvenuto"></span>! 👋</h1>
+                    <h1>Buongiorno! 👋</h1>
                     <p>Inizia aggiungendo gli studenti, poi potrai inserire voti, assenze e compiti.</p>
                 </section>
 
@@ -79,11 +79,11 @@
                         <div class="form-riga">
                             <div class="campo">
                                 <label for="studente-nome">Nome</label>
-                                <input type="text" id="studente-nome" placeholder="Giulia">
+                                <input type="text" id="studente-nome" placeholder="Nome">
                             </div>
                             <div class="campo">
                                 <label for="studente-cognome">Cognome</label>
-                                <input type="text" id="studente-cognome" placeholder="Bianchi">
+                                <input type="text" id="studente-cognome" placeholder="Cognome">
                             </div>
                         </div>
                         <div class="form-riga">
@@ -93,7 +93,7 @@
                             </div>
                             <div class="campo">
                                 <label for="studente-email">Email dello studente</label>
-                                <input type="email" id="studente-email" placeholder="giulia.bianchi@mail.it">
+                                <input type="email" id="studente-email" placeholder="studente@mail.it">
                             </div>
                         </div>
                         <button type="button" class="btn" onclick="salvaStudente()">Aggiungi studente</button>
@@ -114,9 +114,9 @@
                             <div class="campo">
                                 <label for="voto-tipo">Tipo</label>
                                 <select id="voto-tipo">
-                                    <option>Scritto</option>
-                                    <option>Orale</option>
-                                    <option>Pratico</option>
+                                    <option value="Scritto">Scritto</option>
+                                    <option value="Orale">Orale</option>
+                                    <option value="Pratico">Pratico</option>
                                 </select>
                             </div>
                         </div>
@@ -170,8 +170,8 @@
                             <div class="campo">
                                 <label for="assenza-tipo">Tipo</label>
                                 <select id="assenza-tipo">
-                                    <option>Assenza</option>
-                                    <option>Ritardo</option>
+                                    <option value="Assenza">Assenza</option>
+                                    <option value="Ritardo">Ritardo</option>
                                 </select>
                             </div>
                             <div class="campo">

@@ -6,110 +6,80 @@
         <title>Parent Dashboard - RED</title>
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="icon" href="assets/favicon/favicon.ico">
+        <script defer src="assets/js/storage.js"></script>
+        <script defer src="assets/js/vista-studente.js"></script>
+        <script defer src="assets/js/genitore.js"></script>
     </head>
     <body class="dashboard dash_genitore">
-
 
         <header class="barra-alto">
             <div class="titolo">RED</div>
             <div class="utente">
-                <span>👪 Parent of Giulia Bianchi</span>
-                <a href="index.html">Log out</a>
+                <span>👪 Parent</span>
+                <a href="#" onclick="esci()">Log out</a>
             </div>
         </header>
-
 
         <div class="contenitore">
             <nav class="menu-laterale" aria-label="Parent menu">
                 <ul>
                     <li><a href="#home" class="attivo">🏠 Home</a></li>
                     <li><a href="#voti">📝 Grades</a></li>
-                    <li><a href="#assenze">📅 Absences</a></li>
                     <li><a href="#compiti">📚 Homework</a></li>
-                    <li><a href="#colloqui">🤝 Meetings</a></li>
+                    <li><a href="#assenze">📅 Absences</a></li>
                     <li><a href="#comunicazioni">📢 Notices</a></li>
                 </ul>
             </nav>
 
-
             <main class="contenuto">
                 <section id="home" class="benvenuto">
                     <h1>Welcome! 👋</h1>
-                    <p>You are viewing the data for <strong>Giulia Bianchi</strong>, class 3A.</p>
+                    <p>You are viewing your child's data. <span id="avviso"></span></p>
                 </section>
-
 
                 <section class="riepilogo">
                     <div class="dato">
-                        <span class="numero">7.8</span>
+                        <span class="numero" id="tot-media">-</span>
                         <span class="etichetta">Overall average</span>
                     </div>
                     <div class="dato">
-                        <span class="numero">1</span>
-                        <span class="etichetta">Absence to justify</span>
+                        <span class="numero" id="tot-compiti">0</span>
+                        <span class="etichetta">Homework to hand in</span>
                     </div>
                     <div class="dato">
-                        <span class="numero">3</span>
-                        <span class="etichetta">Assignments due</span>
+                        <span class="numero" id="tot-assenze">0</span>
+                        <span class="etichetta">Absences to justify</span>
                     </div>
                     <div class="dato">
-                        <span class="numero">2</span>
-                        <span class="etichetta">Notices to read</span>
+                        <span class="numero" id="tot-comunicazioni">0</span>
+                        <span class="etichetta">Notices</span>
                     </div>
                 </section>
 
-
                 <section id="voti" class="scheda">
-                    <h2>📝 Giulia's grades</h2>
+                    <h2>📝 Grades</h2>
                     <div class="contenitore-tabella">
                         <table>
                             <thead>
                                 <tr>
+                                    <th>Date</th>
                                     <th>Subject</th>
-                                    <th>Latest grade</th>
-                                    <th>Average</th>
-                                    <th>Teacher</th>
+                                    <th>Type</th>
+                                    <th>Grade</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Mathematics</td>
-                                    <td><span class="voto voto-alto">8</span></td>
-                                    <td>7.8</td>
-                                    <td>Rossi</td>
-                                </tr>
-                                <tr>
-                                    <td>Italian</td>
-                                    <td><span class="voto voto-alto">7.5</span></td>
-                                    <td>7.3</td>
-                                    <td>Verdi</td>
-                                </tr>
-                                <tr>
-                                    <td>English</td>
-                                    <td><span class="voto voto-medio">6</span></td>
-                                    <td>6.5</td>
-                                    <td>Neri</td>
-                                </tr>
-                                <tr>
-                                    <td>History</td>
-                                    <td><span class="voto voto-basso">5</span></td>
-                                    <td>5.8</td>
-                                    <td>Gialli</td>
-                                </tr>
-                                <tr>
-                                    <td>Science</td>
-                                    <td><span class="voto voto-alto">9</span></td>
-                                    <td>8.6</td>
-                                    <td>Blu</td>
-                                </tr>
-                            </tbody>
+                            <tbody id="tabella-voti"></tbody>
                         </table>
                     </div>
                 </section>
 
+                <section id="compiti" class="scheda">
+                    <h2>📚 Assigned homework</h2>
+                    <ul class="lista" id="lista-compiti"></ul>
+                </section>
 
                 <section id="assenze" class="scheda">
-                    <h2>📅 Absences and justifications</h2>
+                    <h2>📅 Absences and lateness</h2>
                     <div class="contenitore-tabella">
                         <table>
                             <thead>
@@ -120,69 +90,18 @@
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>30/10/2026</td>
-                                    <td>Absence</td>
-                                    <td><span class="badge badge-attesa">To be justified</span></td>
-                                    <td><button type="button" class="btn btn-piccolo">Justify</button></td>
-                                </tr>
-                                <tr>
-                                    <td>15/10/2026</td>
-                                    <td>Late arrival</td>
-                                    <td><span class="badge badge-ok">Justified</span></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>08/10/2026</td>
-                                    <td>Absence</td>
-                                    <td><span class="badge badge-ok">Justified</span></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
+                            <tbody id="tabella-assenze"></tbody>
                         </table>
                     </div>
                 </section>
 
+                <section id="comunicazioni" class="scheda">
+                    <h2>📢 Notices from the school</h2>
+                    <ul class="lista" id="lista-comunicazioni"></ul>
+                </section>
+            </main>
+        </div>
 
-                <section class="griglia">
-                    <div id="compiti" class="scheda">
-                        <h2>📚 Assignments due</h2>
-                        <ul class="lista">
-                            <li>
-                                <span class="data">Due on 03/11/2026</span>
-                                <strong>Mathematics</strong>
-                                Exercises page 142, nos. 1-10
-                            </li>
-                            <li>
-                                <span class="data">Due on 04/11/2026</span>
-                                <strong>English</strong>
-                                100-word text about the holidays
-                            </li>
-                            <li>
-                                <span class="data">Due on 06/11/2026</span>
-                                <strong>History</strong>
-                                Study chapter 4
-                            </li>
-                        </ul>
-                    </div>
-
-
-                    <div id="colloqui" class="scheda">
-                        <h2>🤝 Meetings with teachers</h2>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Teacher</th>
-                                    <th>Date</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Mr. Rossi</td>
-                                    <td>12/11 - 15:30</td>
-                                    <td><span class="badge badge-ok">Confirmed</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Ms. Gialli<
+        <footer>RED - Digital Electronic Register</footer>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Recupera password - RED</title>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="icon" href="assets/favicon/favicon.ico">
+        <script defer src="assets/js/storage.js"></script>
+        <script defer src="assets/js/recupera.js"></script>
+    </head>
+    <body class="pagina-login">
+        <div class="scheda-login">
+            <a href="index.html" class="link-back">Torna all'accesso</a>
+            <h1>Recupera password</h1>
+            <p class="sottotitolo">Inserisci la tua email: ti invieremo le istruzioni per cambiare la password.</p>
+
+            <div class="campo">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="nome@mail.it" onkeydown="invioEmail(event)">
+            </div>
+
+            <button type="button" class="btn" onclick="recupera()">Invia richiesta</button>
+            <div id="messaggi" class="messaggi"></div>
+        </div>
+    </body>
+</html>

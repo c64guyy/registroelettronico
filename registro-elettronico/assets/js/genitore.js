@@ -1,9 +1,6 @@
-// ===== DASHBOARD GENITORE (genitore.js) =====
-// Richiede storage.js e vista-studente.js caricati prima.
-
 const utente = controllaAccesso("genitore");
 
-// Il genitore giustifica un'assenza: la segna come giustificata nel foglio JSON
+// indice = posizione dell'assenza nell'array completo "assenze"
 function giustifica(indice) {
     const assenze = leggi("assenze");
     assenze[indice].giustificata = true;
@@ -12,6 +9,5 @@ function giustifica(indice) {
 }
 
 if (utente !== null) {
-    scrivi("nome-utente", utente.nome);
     mostraDatiStudente(utente.emailFiglio, true);
 }

@@ -1,9 +1,5 @@
-// ===== DASHBOARD DOCENTE (docente.js) =====
-// Richiede storage.js caricato prima.
-
 const utente = controllaAccesso("docente");
 
-// ----- Funzioni di aiuto -----
 function valore(id) {
     return document.getElementById(id).value.trim();
 }
@@ -32,7 +28,6 @@ function nomeStudente(email) {
     return pulisci(email);
 }
 
-// ----- Inserimento dati (ogni funzione salva un elemento in un foglio JSON) -----
 function salvaStudente() {
     const nome = valore("studente-nome");
     const cognome = valore("studente-cognome");
@@ -40,15 +35,15 @@ function salvaStudente() {
     const email = valore("studente-email").toLowerCase();
 
     if (nome === "" || cognome === "" || classe === "" || email === "") {
-        messaggio("msg-studente", "Compila tutti i campi.", false);
+        messaggio("msg-studente", T.compilaTutto, false);
         return;
     }
     if (!email.includes("@")) {
-        messaggio("msg-studente", "Email non valida.", false);
+        messaggio("msg-studente", T.emailNonValida, false);
         return;
     }
     if (trovaStudente(email)) {
-        messaggio("msg-studente", "Esiste già uno studente con questa email.", false);
+        messaggio("msg-studente", T.esisteGia, false);
         return;
     }
 
@@ -58,7 +53,7 @@ function salvaStudente() {
     svuota("studente-cognome");
     svuota("studente-classe");
     svuota("studente-email");
-    messaggio("msg-studente", "Studente aggiunto!", true);
+    messaggio("msg-studente", T.studenteAggiunto, true);
     mostraTutto();
 }
 
@@ -68,11 +63,12 @@ function salvaVoto() {
     const voto = Number(valore("voto-numero"));
 
     if (email === "" || materia === "") {
-        messaggio("msg-voto", "Scegli lo studente e scrivi la materia.", false);
+        messaggio("msg-voto", T.scegliStudenteMateria, false);
         return;
     }
+    // Number("") vale 0, quindi il campo vuoto va controllato a parte
     if (valore("voto-numero") === "" || voto < 1 || voto > 10) {
-        messaggio("msg-voto", "Il voto deve essere tra 1 e 10.", false);
+        messaggio("msg-voto", T.votoRange, false);
         return;
     }
 
@@ -85,14 +81,14 @@ function salvaVoto() {
     });
 
     svuota("voto-numero");
-    messaggio("msg-voto", "Voto salvato!", true);
+    messaggio("msg-voto", T.votoSalvato, true);
     mostraTutto();
 }
 
 function salvaAssenza() {
     const email = valore("assenza-studente");
     if (email === "") {
-        messaggio("msg-assenza", "Scegli uno studente.", false);
+        messaggio("msg-assenza", T.scegliStudente, false);
         return;
     }
 
@@ -103,7 +99,7 @@ function salvaAssenza() {
         giustificata: false
     });
 
-    messaggio("msg-assenza", "Salvato!", true);
+    messaggio("msg-assenza", T.salvato, true);
     mostraTutto();
 }
 
@@ -114,14 +110,14 @@ function salvaCompito() {
     const consegna = valore("compito-consegna");
 
     if (classe === "" || materia === "" || testo === "" || consegna === "") {
-        messaggio("msg-compito", "Compila tutti i campi.", false);
+        messaggio("msg-compito", T.compilaTutto, false);
         return;
     }
 
     aggiungi("compiti", { classe: classe, materia: materia, testo: testo, consegna: consegna });
 
     svuota("compito-testo");
-    messaggio("msg-compito", "Compito assegnato!", true);
+    messaggio("msg-compito", T.compitoAssegnato, true);
     mostraTutto();
 }
 
@@ -130,7 +126,7 @@ function salvaComunicazione() {
     const testo = valore("com-testo");
 
     if (titolo === "" || testo === "") {
-        messaggio("msg-com", "Scrivi titolo e testo.", false);
+        messaggio("msg-com", T.titoloTesto, false);
         return;
     }
 
@@ -138,12 +134,12 @@ function salvaComunicazione() {
 
     svuota("com-titolo");
     svuota("com-testo");
-    messaggio("msg-com", "Comunicazione pubblicata!", true);
+    messaggio("msg-com", T.comPubblicata, true);
     mostraTutto();
 }
 
 function cancellaDati() {
-    if (!confirm("Vuoi davvero cancellare tutti i dati?")) {
+    if (!confirm(T.confermaCancella)) {
         return;
     }
     localStorage.removeItem("studenti");
@@ -154,7 +150,6 @@ function cancellaDati() {
     mostraTutto();
 }
 
-// ----- Disegno della pagina (si rilegge tutto dal localStorage) -----
 function elencoClassi() {
     const classi = [];
     leggi("studenti").forEach(function (s) {
@@ -177,7 +172,7 @@ function votiDellaClasse(classe) {
 function riempiSelect(id) {
     const select = document.getElementById(id);
     const scelto = select.value;
-    select.innerHTML = '<option value="">-- scegli uno studente --</option>';
+    select.innerHTML = '<option value="">' + T.sceltaStudente + "</option>";
     leggi("studenti").forEach(function (s) {
         select.innerHTML += '<option value="' + pulisci(s.email) + '">' +
             pulisci(s.cognome + " " + s.nome) + " (" + pulisci(s.classe) + ")</option>";
@@ -185,69 +180,60 @@ function riempiSelect(id) {
     select.value = scelto;
 }
 
+// Ridisegna tutta la pagina: va richiamata dopo ogni modifica ai dati
 function mostraTutto() {
     const studenti = leggi("studenti");
     const classi = elencoClassi();
 
-    // Riepilogo in alto
     scrivi("tot-classi", classi.length);
     scrivi("tot-studenti", studenti.length);
     scrivi("tot-voti", leggi("voti").length);
     scrivi("tot-compiti", leggi("compiti").length);
 
-    // Tabella classi
     const righeClassi = classi.map(function (classe) {
         const quanti = studenti.filter(function (s) { return s.classe === classe; }).length;
         return "<td>" + pulisci(classe) + "</td><td>" + quanti + "</td><td>" + media(votiDellaClasse(classe)) + "</td>";
     });
-    mostraTabella("tabella-classi", righeClassi, 3, "Nessuna classe: aggiungi uno studente.");
+    mostraTabella("tabella-classi", righeClassi, 3, T.vuotoClassi);
 
-    // Tabella studenti
     const righeStudenti = studenti.map(function (s) {
         return "<td>" + pulisci(s.cognome + " " + s.nome) + "</td><td>" + pulisci(s.classe) + "</td><td>" + pulisci(s.email) + "</td>";
     });
-    mostraTabella("tabella-studenti", righeStudenti, 3, "Nessuno studente inserito.");
+    mostraTabella("tabella-studenti", righeStudenti, 3, T.vuotoStudenti);
 
-    // Tabella voti (dal più recente)
     const righeVoti = leggi("voti").slice().reverse().map(function (v) {
         return "<td>" + formattaData(v.data) + "</td><td>" + nomeStudente(v.emailStudente) + "</td><td>" +
-            pulisci(v.materia) + "</td><td>" + pulisci(v.tipo) + '</td><td><span class="voto ' +
-            classeVoto(v.voto) + '">' + String(v.voto).replace(".", ",") + "</span></td>";
+            pulisci(v.materia) + "</td><td>" + pulisci(tipo(v.tipo)) + '</td><td><span class="voto ' +
+            classeVoto(v.voto) + '">' + numero(v.voto) + "</span></td>";
     });
-    mostraTabella("tabella-voti", righeVoti, 5, "Nessun voto inserito.");
+    mostraTabella("tabella-voti", righeVoti, 5, T.vuotoVoti);
 
-    // Tabella assenze
     const righeAssenze = leggi("assenze").slice().reverse().map(function (a) {
         const stato = a.giustificata
-            ? '<span class="badge badge-ok">Giustificata</span>'
-            : '<span class="badge badge-attesa">Da giustificare</span>';
+            ? '<span class="badge badge-ok">' + T.giustificata + "</span>"
+            : '<span class="badge badge-attesa">' + T.daGiustificare + "</span>";
         return "<td>" + formattaData(a.data) + "</td><td>" + nomeStudente(a.emailStudente) + "</td><td>" +
-            pulisci(a.tipo) + "</td><td>" + stato + "</td>";
+            pulisci(tipo(a.tipo)) + "</td><td>" + stato + "</td>";
     });
-    mostraTabella("tabella-assenze", righeAssenze, 4, "Nessuna assenza registrata.");
+    mostraTabella("tabella-assenze", righeAssenze, 4, T.vuotoAssenze);
 
-    // Liste compiti e comunicazioni
     const compiti = leggi("compiti").slice().reverse().map(function (c) {
-        return '<span class="data">' + pulisci(c.classe) + " - consegna " + formattaData(c.consegna) + "</span><strong>" +
+        return '<span class="data">' + pulisci(c.classe) + " - " + T.consegna + " " + formattaData(c.consegna) + "</span><strong>" +
             pulisci(c.materia) + "</strong> " + pulisci(c.testo);
     });
-    mostraLista("lista-compiti", compiti, "Nessun compito assegnato.");
+    mostraLista("lista-compiti", compiti, T.vuotoCompiti);
 
     const comunicazioni = leggi("comunicazioni").slice().reverse().map(function (c) {
         return '<span class="data">' + formattaData(c.data) + "</span><strong>" +
             pulisci(c.titolo) + "</strong> " + pulisci(c.testo);
     });
-    mostraLista("lista-comunicazioni", comunicazioni, "Nessuna comunicazione pubblicata.");
+    mostraLista("lista-comunicazioni", comunicazioni, T.vuotoComunicazioni);
 
-    // Menu a tendina
     riempiSelect("voto-studente");
     riempiSelect("assenza-studente");
 }
 
-// ----- Avvio -----
 if (utente !== null) {
-    scrivi("nome-utente", utente.nome);
-    scrivi("nome-benvenuto", utente.nome.split(" ")[1]);
     document.getElementById("voto-data").value = oggi();
     document.getElementById("assenza-data").value = oggi();
     mostraTutto();

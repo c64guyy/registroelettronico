@@ -1,34 +1,25 @@
-// ===== LOGIN (login.js) =====
-// Richiede storage.js caricato PRIMA di questo file.
-// Le password restano qui nel codice e NON vengono salvate nel localStorage
-// (come dice la slide del prof). Nel browser si salva solo chi è loggato.
 
 const UTENTI = {
     login_alunno: {
-        email: "giulia.bianchi@mail.it",
+        email: "studente@mail.it",
         password: "Studente1!",
         ruolo: "studente",
-        nome: "Giulia Bianchi",
-        pagina: "dashboard_studente.html"
+        pagina: "dashboard_studente"
     },
     login_docente: {
         email: "docente@scuola.it",
         password: "Docente1!",
         ruolo: "docente",
-        nome: "Marco Rossi",
-        pagina: "dashboard_docente.html"
+        pagina: "dashboard_docente"
     },
     login_genitore: {
         email: "genitore@mail.it",
         password: "Genitore1!",
         ruolo: "genitore",
-        nome: "Genitore di Giulia Bianchi",
-        emailFiglio: "giulia.bianchi@mail.it",
-        pagina: "dashboard_genitore.html"
+        pagina: "dashboard_genitore"
     }
 };
 
-const REGEX_EMAIL = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const REGEX_PASSWORD = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}$/;
 
 function mostraPsw() {
@@ -37,7 +28,7 @@ function mostraPsw() {
     const nascosta = campo.type === "password";
 
     campo.type = nascosta ? "text" : "password";
-    bottone.setAttribute("aria-label", nascosta ? "Nascondi password" : "Mostra password");
+    bottone.setAttribute("aria-label", nascosta ? T.nascondiPsw : T.mostraPsw);
 }
 
 function mostraMessaggio(testo, ok) {
@@ -46,7 +37,6 @@ function mostraMessaggio(testo, ok) {
     box.style.color = ok ? "green" : "red";
 }
 
-// Colora il bordo del campo: verde se valido, rosso se no
 function controllaCampo(campo, regex) {
     if (campo.value === "") {
         campo.style.borderColor = "";
@@ -55,7 +45,6 @@ function controllaCampo(campo, regex) {
     campo.style.borderColor = regex.test(campo.value.trim()) ? "green" : "crimson";
 }
 
-// Premendo Invio nel campo password si fa il login
 function invioPassword(evento) {
     if (evento.key === "Enter") {
         login();
@@ -67,37 +56,49 @@ function login() {
     const password = document.getElementById("password").value;
 
     if (email === "" || password === "") {
-        mostraMessaggio("Inserisci email e password.", false);
+        mostraMessaggio(T.campiVuoti, false);
         return;
     }
-
     if (!REGEX_EMAIL.test(email)) {
-        mostraMessaggio("L'email non è in un formato valido.", false);
+        mostraMessaggio(T.emailNonValida, false);
         return;
     }
-
     if (!REGEX_PASSWORD.test(password)) {
-        mostraMessaggio("La password deve contenere almeno 8 caratteri, con maiuscola, minuscola, numero e simbolo.", false);
+        mostraMessaggio(T.passwordNonValida, false);
         return;
     }
 
-    // Capisco il ruolo dalla classe del <body> (login_alunno, login_docente...)
     const ruolo = Object.keys(UTENTI).find(function (classe) {
         return document.body.classList.contains(classe);
     });
     const utente = UTENTI[ruolo];
 
     if (email !== utente.email || password !== utente.password) {
-        mostraMessaggio("Email o password errate.", false);
+        mostraMessaggio(T.credenzialiErrate, false);
         return;
     }
 
-    // Salvo la sessione (senza password!)
+    
+    let emailFiglio = "";
+    if (utente.ruolo === "genitore") {
+        emailFiglio = document.getElementById("email-alunno").value.trim().toLowerCase();
+        if (!REGEX_EMAIL.test(emailFiglio)) {
+            mostraMessaggio(T.emailAlunnoNonValida, false);
+            return;
+        }
+        const trovato = leggi("studenti").some(function (s) {
+            return s.email === emailFiglio;
+        });
+        if (!trovato) {
+            mostraMessaggio(T.alunnoNonTrovato, false);
+            return;
+        }
+    }
+
     const sessione = {
         email: utente.email,
         ruolo: utente.ruolo,
-        nome: utente.nome,
-        emailFiglio: utente.emailFiglio || ""
+        emailFiglio: emailFiglio
     };
     const ricordami = document.getElementById("btnRicordami").checked;
     sessionStorage.removeItem("sessione");
@@ -108,15 +109,15 @@ function login() {
         sessionStorage.setItem("sessione", JSON.stringify(sessione));
     }
 
-    mostraMessaggio("Accesso riuscito! Reindirizzamento...", true);
+    mostraMessaggio(T.accessoRiuscito, true);
     setTimeout(function () {
-        window.location.href = utente.pagina;
+        window.location.href = utente.pagina + SUFFISSO + ".html";
     }, 800);
 }
 
-// Controllo "live" dei campi mentre si scrive
 const campoEmail = document.getElementById("email");
 const campoPassword = document.getElementById("password");
+const campoEmailAlunno = document.getElementById("email-alunno");
 
 campoEmail.addEventListener("input", function () {
     controllaCampo(campoEmail, REGEX_EMAIL);
@@ -124,3 +125,8 @@ campoEmail.addEventListener("input", function () {
 campoPassword.addEventListener("input", function () {
     controllaCampo(campoPassword, REGEX_PASSWORD);
 });
+if (campoEmailAlunno) {
+    campoEmailAlunno.addEventListener("input", function () {
+        controllaCampo(campoEmailAlunno, REGEX_EMAIL);
+    });
+}

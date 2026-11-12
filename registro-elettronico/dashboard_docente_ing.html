@@ -6,58 +6,56 @@
         <title>Teacher Dashboard - RED</title>
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="icon" href="assets/favicon/favicon.ico">
+        <script defer src="assets/js/storage.js"></script>
+        <script defer src="assets/js/docente.js"></script>
     </head>
     <body class="dashboard dash_docente">
-
 
         <header class="barra-alto">
             <div class="titolo">RED</div>
             <div class="utente">
-                <span>🧑‍🏫 Mr. Marco Rossi</span>
-                <a href="index.html">Log out</a>
+                <span>🧑‍🏫 Teacher</span>
+                <a href="#" onclick="esci()">Log out</a>
             </div>
         </header>
-
 
         <div class="contenitore">
             <nav class="menu-laterale" aria-label="Teacher menu">
                 <ul>
                     <li><a href="#home" class="attivo">🏠 Home</a></li>
                     <li><a href="#classi">🏫 My classes</a></li>
-                    <li><a href="#appello">✅ Attendance</a></li>
-                    <li><a href="#nuovo-voto">📝 Enter a grade</a></li>
+                    <li><a href="#studenti">🎓 Students</a></li>
+                    <li><a href="#nuovo-voto">📝 Enter grade</a></li>
+                    <li><a href="#assenze">📅 Absences</a></li>
                     <li><a href="#compiti">📚 Homework</a></li>
-                    <li><a href="#agenda">🗓️ Agenda</a></li>
+                    <li><a href="#comunicazioni">📢 Notices</a></li>
                 </ul>
             </nav>
 
-
             <main class="contenuto">
                 <section id="home" class="benvenuto">
-                    <h1>Good morning, Mr. Rossi! 👋</h1>
-                    <p>Here is what is scheduled for today.</p>
+                    <h1>Good morning! 👋</h1>
+                    <p>Start by adding students, then you can enter grades, absences and homework.</p>
                 </section>
-
 
                 <section class="riepilogo">
                     <div class="dato">
-                        <span class="numero">4</span>
+                        <span class="numero" id="tot-classi">0</span>
                         <span class="etichetta">Classes</span>
                     </div>
                     <div class="dato">
-                        <span class="numero">92</span>
+                        <span class="numero" id="tot-studenti">0</span>
                         <span class="etichetta">Students</span>
                     </div>
                     <div class="dato">
-                        <span class="numero">3</span>
-                        <span class="etichetta">Lessons today</span>
+                        <span class="numero" id="tot-voti">0</span>
+                        <span class="etichetta">Grades entered</span>
                     </div>
                     <div class="dato">
-                        <span class="numero">12</span>
-                        <span class="etichetta">Assignments to grade</span>
+                        <span class="numero" id="tot-compiti">0</span>
+                        <span class="etichetta">Homework assigned</span>
                     </div>
                 </section>
-
 
                 <section id="classi" class="scheda">
                     <h2>🏫 My classes</h2>
@@ -66,88 +64,184 @@
                             <thead>
                                 <tr>
                                     <th>Class</th>
-                                    <th>Subject</th>
                                     <th>Students</th>
                                     <th>Class average</th>
-                                    <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1A</td>
-                                    <td>Mathematics</td>
-                                    <td>22</td>
-                                    <td><span class="voto voto-alto">7.2</span></td>
-                                    <td><a href="#">Open</a></td>
-                                </tr>
-                                <tr>
-                                    <td>2B</td>
-                                    <td>Mathematics</td>
-                                    <td>24</td>
-                                    <td><span class="voto voto-medio">6.4</span></td>
-                                    <td><a href="#">Open</a></td>
-                                </tr>
-                                <tr>
-                                    <td>3A</td>
-                                    <td>Mathematics</td>
-                                    <td>23</td>
-                                    <td><span class="voto voto-alto">7.8</span></td>
-                                    <td><a href="#">Open</a></td>
-                                </tr>
-                                <tr>
-                                    <td>4C</td>
-                                    <td>Physics</td>
-                                    <td>23</td>
-                                    <td><span class="voto voto-basso">5.9</span></td>
-                                    <td><a href="#">Open</a></td>
-                                </tr>
-                            </tbody>
+                            <tbody id="tabella-classi"></tbody>
                         </table>
                     </div>
                 </section>
 
-
                 <section class="griglia">
-                    <div id="appello" class="scheda">
-                        <h2>✅ Attendance - 3A</h2>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Student</th>
-                                    <th>Present</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Bianchi Giulia</td>
-                                    <td><input type="checkbox" checked></td>
-                                </tr>
-                                <tr>
-                                    <td>Conti Luca</td>
-                                    <td><input type="checkbox" checked></td>
-                                </tr>
-                                <tr>
-                                    <td>Ferrari Sara</td>
-                                    <td><input type="checkbox"></td>
-                                </tr>
-                                <tr>
-                                    <td>Greco Matteo</td>
-                                    <td><input type="checkbox" checked></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <br>
-                        <button type="button" class="btn btn-piccolo">Save attendance</button>
+                    <div id="studenti" class="scheda">
+                        <h2>🎓 Add a student</h2>
+                        <div class="form-riga">
+                            <div class="campo">
+                                <label for="studente-nome">First name</label>
+                                <input type="text" id="studente-nome" placeholder="First name">
+                            </div>
+                            <div class="campo">
+                                <label for="studente-cognome">Last name</label>
+                                <input type="text" id="studente-cognome" placeholder="Last name">
+                            </div>
+                        </div>
+                        <div class="form-riga">
+                            <div class="campo">
+                                <label for="studente-classe">Class</label>
+                                <input type="text" id="studente-classe" placeholder="3A">
+                            </div>
+                            <div class="campo">
+                                <label for="studente-email">Student's email</label>
+                                <input type="email" id="studente-email" placeholder="studente@mail.it">
+                            </div>
+                        </div>
+                        <button type="button" class="btn" onclick="salvaStudente()">Add student</button>
+                        <div id="msg-studente" class="messaggi"></div>
                     </div>
-
 
                     <div id="nuovo-voto" class="scheda">
                         <h2>📝 Enter a grade</h2>
                         <div class="campo">
-                            <label for="classe">Class</label>
-                            <select id="classe" name="classe">
-                                <option>1A</option>
-                                <option>2B</option>
-                                <option selected>3A</option>
-                                <option>4C</option>
-                            </select>
+                            <label for="voto-studente">Student</label>
+                            <select id="voto-studente"></select>
+                        </div>
+                        <div class="form-riga">
+                            <div class="campo">
+                                <label for="voto-materia">Subject</label>
+                                <input type="text" id="voto-materia" placeholder="e.g. Mathematics">
+                            </div>
+                            <div class="campo">
+                                <label for="voto-tipo">Type</label>
+                                <select id="voto-tipo">
+                                    <option value="Scritto">Written</option>
+                                    <option value="Orale">Oral</option>
+                                    <option value="Pratico">Practical</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-riga">
+                            <div class="campo">
+                                <label for="voto-numero">Grade</label>
+                                <input type="number" id="voto-numero" min="1" max="10" step="0.25" placeholder="e.g. 7.5">
+                            </div>
+                            <div class="campo">
+                                <label for="voto-data">Date</label>
+                                <input type="date" id="voto-data">
+                            </div>
+                        </div>
+                        <button type="button" class="btn" onclick="salvaVoto()">Save grade</button>
+                        <div id="msg-voto" class="messaggi"></div>
+                    </div>
+                </section>
+
+                <section class="scheda">
+                    <h2>🎓 Student list</h2>
+                    <div class="contenitore-tabella">
+                        <table>
+                            <thead>
+                                <tr><th>Last name and first name</th><th>Class</th><th>Email</th></tr>
+                            </thead>
+                            <tbody id="tabella-studenti"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="scheda">
+                    <h2>📝 Grades entered</h2>
+                    <div class="contenitore-tabella">
+                        <table>
+                            <thead>
+                                <tr><th>Date</th><th>Student</th><th>Subject</th><th>Type</th><th>Grade</th></tr>
+                            </thead>
+                            <tbody id="tabella-voti"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="griglia">
+                    <div id="assenze" class="scheda">
+                        <h2>📅 Record absence or lateness</h2>
+                        <div class="campo">
+                            <label for="assenza-studente">Student</label>
+                            <select id="assenza-studente"></select>
+                        </div>
+                        <div class="form-riga">
+                            <div class="campo">
+                                <label for="assenza-tipo">Type</label>
+                                <select id="assenza-tipo">
+                                    <option value="Assenza">Absence</option>
+                                    <option value="Ritardo">Lateness</option>
+                                </select>
+                            </div>
+                            <div class="campo">
+                                <label for="assenza-data">Date</label>
+                                <input type="date" id="assenza-data">
+                            </div>
+                        </div>
+                        <button type="button" class="btn" onclick="salvaAssenza()">Save</button>
+                        <div id="msg-assenza" class="messaggi"></div>
+                        <br>
+                        <div class="contenitore-tabella">
+                            <table>
+                                <thead>
+                                    <tr><th>Date</th><th>Student</th><th>Type</th><th>Status</th></tr>
+                                </thead>
+                                <tbody id="tabella-assenze"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="compiti" class="scheda">
+                        <h2>📚 Assign homework</h2>
+                        <div class="form-riga">
+                            <div class="campo">
+                                <label for="compito-classe">Class</label>
+                                <input type="text" id="compito-classe" placeholder="3A">
+                            </div>
+                            <div class="campo">
+                                <label for="compito-materia">Subject</label>
+                                <input type="text" id="compito-materia" placeholder="Mathematics">
+                            </div>
+                        </div>
+                        <div class="campo">
+                            <label for="compito-testo">Description</label>
+                            <input type="text" id="compito-testo" placeholder="Exercises page 142, nos. 1-10">
+                        </div>
+                        <div class="campo">
+                            <label for="compito-consegna">Due date</label>
+                            <input type="date" id="compito-consegna">
+                        </div>
+                        <button type="button" class="btn" onclick="salvaCompito()">Assign homework</button>
+                        <div id="msg-compito" class="messaggi"></div>
+                        <ul class="lista" id="lista-compiti"></ul>
+                    </div>
+                </section>
+
+                <section id="comunicazioni" class="scheda">
+                    <h2>📢 Notices</h2>
+                    <div class="campo">
+                        <label for="com-titolo">Title</label>
+                        <input type="text" id="com-titolo" placeholder="Notice title">
+                    </div>
+                    <div class="campo">
+                        <label for="com-testo">Text</label>
+                        <input type="text" id="com-testo" placeholder="Write your message here">
+                    </div>
+                    <button type="button" class="btn" onclick="salvaComunicazione()">Publish</button>
+                    <div id="msg-com" class="messaggi"></div>
+                    <ul class="lista" id="lista-comunicazioni"></ul>
+                </section>
+
+                <section class="scheda">
+                    <h2>🧹 Saved data</h2>
+                    <p>Delete the students, grades, absences, homework and notices saved in this browser.</p>
+                    <br>
+                    <button type="button" class="btn btn-piccolo" onclick="cancellaDati()">Delete all data</button>
+                </section>
+            </main>
+        </div>
+
+        <footer>RED - Digital Electronic Register</footer>
+    </body>
+</html>
